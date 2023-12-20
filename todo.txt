@@ -1,15 +1,15 @@
 // TODO
--- general goal is to build out keybindings in groups that make sense then to optimize to more efficient mappings based on how useful they are
-make a cheatsheet of all the commands I can use (document in obsidian)
+Once majority of these plugins are added / stable: refactor keymappings to more efficient maps
 
-GO (eventually I want to get most of these plugins from smaller plugins and reuse language generic features where possible):
+GO:
     go test coverage https://github.com/rafaelsq/nvim-goc.lua
-    run unit tests 
     debugger
     update golint
     go implements list?
     find a way to get type definition from lsp.hover
 
+git:
+    tool for merging: should be able to use fugitive
 
 file navigation options:
     window control. works with telescope and more https://github.com/anuvyklack/hydra.nvim
@@ -18,27 +18,25 @@ file navigation options:
     https://github.com/kelly-lin/ranger.nvim
 
 in file navigation optimizationss:
+    https://github.com/ray-x/navigator.lua 
     better word jumping, aimed at code rather than text https://github.com/chrisgrieser/nvim-spider 
+    learn treesitter textobjects 
     sneak like https://github.com/ggandor/leap.nvim https://github.com/folke/flash.nvim
+    like telescope symbol viewer but aims at navigating the current file  https://github.com/SmiteshP/nvim-navbuddy | can telescope do this?
 
 quality of life:
     dashboard https://github.com/nvimdev/dashboard-nvim or  https://github.com/startup-nvim/startup.nvim
     telescope compatible clipboard https://github.com/AckslD/nvim-neoclip.lua
 
-nice to haves: (need more investigation)
-    runtime analysis? https://github.com/ray-x/navigator.lua | does telescope do this?
-    like telescope symbol viewer but aims at navigating the current file  https://github.com/SmiteshP/nvim-navbuddy | can telescope do this?
-
 /*
-- need to set all shortcuts to be available when it can be used. I think this is when buffers are loaded?
+- need to set all shortcuts to be available when it can be used. I think this is when buffers are loaded? e.g only get go tools in a go file
 - telescope references
 - telescope jump to places might be clashing with zoxide. I am getting two lots of previews
 */
 
 
-// symbols outline pinned side (does telescope provide enough of this)
+// symbols outline pinned side (does telescope provide enough of this) | does the go version offer better structure?
 https://github.com/crusj/structrue-go.nvim  // symbols for go with pane and peek windows
-
 
 // code action menu. If this menu displays all code actions in the file might be worth
 https://github.com/weilbith/nvim-code-action-menu
@@ -46,13 +44,8 @@ https://github.com/weilbith/nvim-code-action-menu
 // ui for all the lsp actions. This could be good early and once used to things delete
 https://github.com/jinzhongjia/LspUI.nvim/wiki/Screen-Shot
 
-
 // mild highlight on duplicate words // this might be annoying
 https://github.com/RRethy/vim-illuminate
-
-// this might be worth of quick access docker vim acess. lazydocker might be better
-https://github.com/jamestthompson3/nvim-remote-containers
-
 
 // searchable cheat sheet // I think I would like to build one rather than use this
 https://github.com/sudormrfbin/cheatsheet.nvim
