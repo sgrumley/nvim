@@ -71,6 +71,7 @@ nmap("gP", "<cmd>lua require('goto-preview').goto_preview_close_all_win()<CR>", 
 
 -- telescope
 nmap("<leader>cd", "<cmd>Telescope lsp_type_definitions<CR>", "List Type Definitions")
+nmap("<leader>ci", "<cmd>Telescope lsp_implementations<CR>", "List Implementations")
 nmap("<leader>cs", "<cmd>Telescope lsp_document_symbols<CR>", "List Document Symbols")
 nmap("<leader>cw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "List Workspace Symbols") -- this is super slow, need to be careful with it or filter vendor
 nmap("<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "[C]ode [R]ename")
