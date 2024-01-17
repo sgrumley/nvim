@@ -1,54 +1,34 @@
-// TODO
-Once majority of these plugins are added / stable: refactor keymappings to more efficient maps
+TODO -> Learn -> Install -> Try
 
-GO:
-    go test coverage https://github.com/rafaelsq/nvim-goc.lua
-    debugger
-    update golint
-    go implements list?
-    find a way to get type definition from lsp.hover
+TODO:
+- refactor keymappings to more efficient maps
+- setup a better way for dealing with copy, paste, cut
+- setup a lint file with rules i like
+- decide how I best like symbol out lines
+- only attach commands based on buffer. e.g all go commands can move into <leader>l once I attach them to go files
 
-git:
-    tool for merging: should be able to use fugitive
+Learn: 
+- treesitter text objects
+- testing + debuggin
+- fugitive git merge
+- surround
 
-file navigation options:
-    window control. works with telescope and more https://github.com/anuvyklack/hydra.nvim
-    harpoon https://github.com/ThePrimeagen/harpoon
-    https://github.com/LukasPietzschmann/telescope-tabs
-    https://github.com/kelly-lin/ranger.nvim
+Install:
+- go test coverage https://github.com/rafaelsq/nvim-goc.lua (do this after attaching commands to the buffer)
+- dashboard
 
-in file navigation optimizationss:
-    https://github.com/ray-x/navigator.lua 
-    better word jumping, aimed at code rather than text https://github.com/chrisgrieser/nvim-spider 
-    learn treesitter textobjects 
-    sneak like https://github.com/ggandor/leap.nvim https://github.com/folke/flash.nvim
-    like telescope symbol viewer but aims at navigating the current file  https://github.com/SmiteshP/nvim-navbuddy | can telescope do this?
-
-quality of life:
-    dashboard https://github.com/nvimdev/dashboard-nvim or  https://github.com/startup-nvim/startup.nvim
-    telescope compatible clipboard https://github.com/AckslD/nvim-neoclip.lua
-
-/*
-- need to set all shortcuts to be available when it can be used. I think this is when buffers are loaded? e.g only get go tools in a go file
-- telescope references
-- telescope jump to places might be clashing with zoxide. I am getting two lots of previews
-*/
-
-
-// symbols outline pinned side (does telescope provide enough of this) | does the go version offer better structure?
-https://github.com/crusj/structrue-go.nvim  // symbols for go with pane and peek windows
-
-// code action menu. If this menu displays all code actions in the file might be worth
-https://github.com/weilbith/nvim-code-action-menu
-
-// ui for all the lsp actions. This could be good early and once used to things delete
-https://github.com/jinzhongjia/LspUI.nvim/wiki/Screen-Shot
-
-// mild highlight on duplicate words // this might be annoying
-https://github.com/RRethy/vim-illuminate
-
-// searchable cheat sheet // I think I would like to build one rather than use this
-https://github.com/sudormrfbin/cheatsheet.nvim
+Try out:
+- ray-x navigator
+- window control. works with telescope and more https://github.com/anuvyklack/hydra.nvim
+- https://github.com/LukasPietzschmann/telescope-tabs
+- https://github.com/kelly-lin/ranger.nvim
+- better word jumping, aimed at code rather than text https://github.com/chrisgrieser/nvim-spider 
+- like telescope symbol viewer but aims at navigating the current file  https://github.com/SmiteshP/nvim-navbuddy | can telescope do this?
+- https://github.com/RRethy/vim-illuminate
+- telescope compatible clipboard https://github.com/AckslD/nvim-neoclip.lua
+- https://github.com/crusj/structrue-go.nvim  // symbols for go with pane and peek windows
+- https://github.com/weilbith/nvim-code-action-menu // code action menu. If this menu displays all code actions in the file might be worth
+- https://github.com/jinzhongjia/LspUI.nvim/wiki/Screen-Shot // ui for all the lsp actions. This could be good early and once used to things delete
 
 
 

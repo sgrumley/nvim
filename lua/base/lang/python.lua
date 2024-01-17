@@ -5,13 +5,13 @@ return {
         vim.list_extend(opts.ensure_installed, { "ninja", "python", "rst", "toml" })
       end,
     },
-    {
-      "jose-elias-alvarez/null-ls.nvim",
-      opts = function(_, opts)
-        local nls = require "null-ls"
-        table.insert(opts.sources, nls.builtins.formatting.black)
-      end,
-    },
+    -- { TODO: replace with nvim-lint + conform
+    --   "jose-elias-alvarez/null-ls.nvim",
+    --   opts = function(_, opts)
+    --     local nls = require "null-ls"
+    --     table.insert(opts.sources, nls.builtins.formatting.black)
+    --   end,
+    -- },
     {
       "williamboman/mason.nvim",
       opts = function(_, opts)

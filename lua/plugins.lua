@@ -174,6 +174,15 @@ return {
 	-- }}}
 
 	-- Quality Of Life {{{
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = {"nvim-lua/plenary.nvim"},
+		opts = {},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = {},
+	},
 	-- comment
 	{
 		"numToStr/Comment.nvim",
@@ -216,12 +225,17 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {}, -- this is equalent to setup({}) function
+		opts = {}, 
 	},
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 	-- "gc" to comment visual regions/lines
 	{ "numToStr/Comment.nvim", opts = {} },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim"},
+		opts = {},
+	},
 	{
 		-- Add indentation guides even on blank lines
 		"lukas-reineke/indent-blankline.nvim",
@@ -265,7 +279,7 @@ return {
 
 	--}}}
 
-	-- Neo Tree {{{
+	-- Neo Tree / could be replaced by ranger or oil {{{
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",

@@ -14,6 +14,13 @@ nmap(";", "<cmd>FineCmdline<CR>", "Enter Fine Command Line Mode")
 nmap("<leader>s", "<cmd>ToggleTerm<CR>", "Open [Shell]")
 -- }}}
 
+-- Harpoon {{{
+nmap("<leader>am", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Harpoon quick menu")
+nmap("<leader>al", "<cmd>lua require('harpoon.ui').nav_next()<CR>", "Harpoon Next")
+nmap("<leader>ah", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "Harpoon Prev")
+nmap("<leader>aa", "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon Add file")
+-- }}}
+
 -- Telescope {{{
 nmap("<leader>fr", "<cmd>Telescope oldfiles<CR>", "[F]ind [R]ecent Files")
 nmap("<leader>fg", "<cmd>Telescope git_files<CR>", "[F]ind [G]it Files")

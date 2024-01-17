@@ -124,10 +124,10 @@ local function get_codelldb()
       "Saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
       opts = {
-        null_ls = {
-          enabled = true,
-          name = "crates.nvim",
-        },
+        -- null_ls = { replace with lint-nvim + conform
+        --   enabled = true,
+        --   name = "crates.nvim",
+        -- },
         popup = {
           border = "rounded",
         },
