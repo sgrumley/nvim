@@ -26,7 +26,7 @@ return {
 			},
 			highlight = { enable = true, additional_vim_regex_highlighting = { "org", "markdown" } },
 			indent = { enable = true },
-			ts_context_commentstring = { enable = true, enable_autocmd = false},
+			ts_context_commentstring = { enable = true, enable_autocmd = false },
 			incremental_selection = {
 				enable = true,
 				keymaps = {

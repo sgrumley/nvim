@@ -39,14 +39,14 @@ function M.notify(formatters)
     local line = "- **" .. client.name .. "**"
     if client.name == "null-ls" then
       line = line
-        .. " ("
-        .. table.concat(
-          vim.tbl_map(function(f)
-            return "`" .. f.name .. "`"
-          end, formatters.null_ls),
-          ", "
-        )
-        .. ")"
+          .. " ("
+          .. table.concat(
+            vim.tbl_map(function(f)
+              return "`" .. f.name .. "`"
+            end, formatters.null_ls),
+            ", "
+          )
+          .. ")"
     end
     table.insert(lines, line)
   end
@@ -71,16 +71,21 @@ function M.notify(formatters)
 end
 
 function M.supports_format(client)
-  if client.config and client.config.capabilities and client.config.capabilities.documentFormattingProvider == false then
+  if
+      client.config
+      and client.config.capabilities
+      and client.config.capabilities.documentFormattingProvider == false
+  then
     return false
   end
-  return client.supports_method "textDocument/formatting" or client.supports_method "textDocument/rangeFormatting"
+  return client.supports_method("textDocument/formatting") or client.supports_method("textDocument/rangeFormatting")
 end
 
 function M.get_formatters(bufnr)
   local ft = vim.bo[bufnr].filetype
   -- check if we have any null-ls formatters for the current filetype
-  local null_ls = package.loaded["null-ls"] and require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") or {}
+  local null_ls = package.loaded["null-ls"] and require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING")
+      or {}
 
   local ret = {
     active = {},
@@ -88,7 +93,7 @@ function M.get_formatters(bufnr)
     null_ls = null_ls,
   }
 
-  local clients = vim.lsp.get_active_clients { bufnr = bufnr }
+  local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
   for _, client in ipairs(clients) do
     if M.supports_format(client) then
       if (#null_ls > 0 and client.name == "null-ls") or #null_ls == 0 then

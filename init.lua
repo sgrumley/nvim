@@ -4,19 +4,19 @@
 ]]
 
 -- Bootsraping plugin manager
-require "lazy-bootstrap"
+require("lazy-bootstrap")
 
 -- Settings
-require "config.settings"
-require "config.keybindings"
+require("config.settings")
+require("config.keybindings")
 
 -- Plugin management {{{
 require("lazy").setup({
-    { import = "base.lsp" },
-    { import = "base.lang" },
-    { import = "base.search" },
-    { import = "base.test" },
-    { import = "plugins" },
+  { import = "base.lsp" },
+  { import = "base.lang" },
+  { import = "base.search" },
+  { import = "base.test" },
+  { import = "plugins" },
 }, {})
 -- }}}
 

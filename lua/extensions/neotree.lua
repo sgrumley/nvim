@@ -12,10 +12,9 @@ neotree.setup({
     mappings = {
       ["l"] = "open",
       ["h"] = "close_node",
-    }
+    },
   },
   filesystem = {
     follow_current_file = true,
   },
 })
-

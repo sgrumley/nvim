@@ -40,7 +40,7 @@ function M.opts(name)
   if not plugin then
     return {}
   end
-  local Plugin = require "lazy.core.plugin"
+  local Plugin = require("lazy.core.plugin")
   return Plugin.values(plugin, "opts", false)
 end
 

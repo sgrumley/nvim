@@ -4,12 +4,15 @@ function M.on_attach(client, buffer)
   local self = M.new(client, buffer)
 
   -- stylua: ignore
-  self:map("gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "Goto Definition" })
+  self:map("gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end,
+    { desc = "Goto Definition" })
   self:map("gr", "Telescope lsp_references", { desc = "References" })
   -- stylua: ignore
-  self:map("gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto Implementation" })
+  self:map("gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end,
+    { desc = "Goto Implementation" })
   -- stylua: ignore
-  self:map("gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto Type Definition" })
+  self:map("gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end,
+    { desc = "Goto Type Definition" })
   self:map("K", vim.lsp.buf.hover, { desc = "Hover" })
   self:map("gK", vim.lsp.buf.signature_help, { desc = "Signature Help", has = "signatureHelp" })
   self:map("]d", M.diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -56,7 +59,7 @@ function M.diagnostic_goto(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go { severity = severity }
+    go({ severity = severity })
   end
 end
 

@@ -166,11 +166,11 @@ keymap("n", "[<Space>", "O<Esc>")
 
 -- Auto indent
 keymap("n", "i", function()
-	if #vim.fn.getline(".") == 0 then
-		return [["_cc]]
-	else
-		return "i"
-	end
+  if #vim.fn.getline(".") == 0 then
+    return [["_cc]]
+  else
+    return "i"
+  end
 end, { expr = true })
 -- }}}
 
