@@ -155,8 +155,13 @@ keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
 -- When deleting text don't copy over yank
+keymap("n", "DD", "dd") -- CUT
+keymap("v", "D", "d")   -- CUT
+
 keymap("n", "dd", '"_dd')
+keymap("v", "d", '"_d')
 keymap("n", "c", '"_c')
+keymap("v", "c", '"_c')
 keymap("n", "x", '"_x')
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dp')

@@ -2,8 +2,11 @@ TODO -> Learn -> Install -> Try
 
 TODO:
 - refactor keymappings to more efficient maps
-- setup a better way for dealing with copy, paste, cut
-- setup a lint file with rules i like
+  - leader q -> buffer quit
+  - sort out testing / debugging -> remove overlap with diagnostics
+  - name harpoon which key
+  - remove leader c peek   
+  - fill out the git shortcuts with fugitive as well
 - decide how I best like symbol out lines
 - only attach commands based on buffer. e.g all go commands can move into <leader>l once I attach them to go files
 - go through each plugin and stabalize (optimize/ clean). Is it needed? 

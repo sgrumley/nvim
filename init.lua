@@ -12,6 +12,7 @@ require("config.keybindings")
 
 -- Plugin management {{{
 require("lazy").setup({
+  { import = "base.dashboard" },
   { import = "base.lsp" },
   { import = "base.lang" },
   { import = "base.search" },
