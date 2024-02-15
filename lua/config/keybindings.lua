@@ -136,10 +136,11 @@ nmap("<leader>ghb", "<cmd>Telescope git_branches<CR>", "[G]it [B]ranches")
 nmap("<leader>gl", "<cmd>LazyGit<CR>", "[G]it [L]azygit") -- open lazy git
 -- }}}
 -- Tooling
-nmap("<leader>phs", "<Plug>RestNvim", "Postman Send")
-nmap("<leader>php", "<Plug>RestNvimPreview", "Postman Preview")
-nmap("<leader>phr", "<Plug>RestNvimLast", "Postman Rerun")
+nmap("<leader>phs", "<Plug>RestNvim", "HTTP Send")
+nmap("<leader>php", "<Plug>RestNvimPreview", "HTTP Preview")
+nmap("<leader>phr", "<Plug>RestNvimLast", "HTTP Rerun")
 nmap("<leader>pdb", "<cmd>DBUI<CR>", "DB UI")
+nmap("<leader>pgs", "<cmd>Grpc<CR>", "GRPC Send")
 -- window management
 nmap("<leader>wq", "<cmd>wincmd q<CR>", "Quit Window")
 nmap("<leader>ws", "<cmd>vsplit<CR>", "Window Split")
