@@ -13,6 +13,8 @@ return {
 				"bash",
 				"dockerfile",
 				"html",
+				"http",
+				"json",
 				"markdown",
 				"markdown_inline",
 				"org",

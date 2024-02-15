@@ -59,6 +59,9 @@ return {
   },
   --}}}
   -- Git {{{
+  {
+    "sindrets/diffview.nvim",
+  },
   { "tpope/vim-fugitive" },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -68,6 +71,34 @@ return {
     end,
   },
   --  }}}
+  -- {{{ Tooling
+  -- Database Client
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod",                     lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
+  -- REST Client
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+    config = function()
+      require("rest-nvim").setup({})
+    end,
+  },
+  -- }}}
 
   -- WhichKey {{{
   {
@@ -78,7 +109,7 @@ return {
   },
   -- }}}
 
-  -- Notifications?{{
+  -- Notifications? {{{
   {
     "folke/noice.nvim",
     dependencies = {
@@ -139,7 +170,7 @@ return {
       },
     },
   },
-  -- }}
+  -- }}}
 
   -- UI {{{
   {
@@ -187,10 +218,14 @@ return {
   -- }}}
 
   -- Quality Of Life {{{
+  -- TODO: move this to nav
   {
     "ThePrimeagen/harpoon",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
+  },
+  {
+    "RRethy/vim-illuminate",
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
