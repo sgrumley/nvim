@@ -201,7 +201,7 @@ return {
     "gorbit99/codewindow.nvim",
     config = function()
       require("codewindow").setup({
-        auto_enable = true,
+        auto_enable = false,
         use_treesitter = true, -- disable to lose colours
         exclude_filetypes = {
           "Outline",
