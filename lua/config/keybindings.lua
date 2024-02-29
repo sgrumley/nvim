@@ -6,6 +6,7 @@ g.mapleader = " "
 -- Neovim {{{
 nmap("<leader>q", "<cmd>q!<CR>", "Force Quit")
 nmap(";", "<cmd>FineCmdline<CR>", "Enter Fine Command Line Mode")
+nmap("cl", "<cmd>noh<CR>", "Clear Search Highlight")
 -- c-w has all window commands they might be nice to move behind leader, otherwise some sort of way to remember. also different section of keymap
 -- find command: nmap('<leader>wc', 'cycle window', '[W]indow [C]ycle')
 -- }}}
@@ -124,12 +125,29 @@ nmap("<leader>ghu", "<cmd>Gitsigns reset_hunk<CR>", "[G]it [U]ndo Chunk")
 nmap("<leader>ghb", "<cmd>Telescope git_branches<CR>", "[G]it [B]ranches")
 -- Todo figure out if I want fugitive. Need some more research
 -- can use https://github.com/pwntester/octo.nvim to review prs in neovim. Am I looking for this or just a way to diff the changes?
+-- :DiffviewOpen
+-- :DiffviewOpen HEAD~2
+-- :DiffviewOpen HEAD~4..HEAD~2
+-- :DiffviewOpen d4a7b0d
+-- :DiffviewOpen d4a7b0d^!
+-- :DiffviewOpen d4a7b0d..519b30e
+-- :DiffviewOpen origin/main...HEAD
 
 nmap("<leader>gl", "<cmd>LazyGit<CR>", "[G]it [L]azygit") -- open lazy git
 -- }}}
-
+-- Tooling
+nmap("<leader>phs", "<Plug>RestNvim", "HTTP Send")
+nmap("<leader>php", "<Plug>RestNvimPreview", "HTTP Preview")
+nmap("<leader>phr", "<Plug>RestNvimLast", "HTTP Rerun")
+nmap("<leader>pdb", "<cmd>DBUI<CR>", "DB UI")
+nmap("<leader>pgs", "<cmd>Grpc<CR>", "GRPC Send")
 -- window management
-
+nmap("<leader>wq", "<cmd>wincmd q<CR>", "Quit Window")
+nmap("<leader>ws", "<cmd>vsplit<CR>", "Window Split")
+nmap("<leader>wf", "<cmd>wincmd |<CR>", "Window Focus")
+nmap("<leader>wr", "<cmd>wincmd =<CR>", "Window Reset Size")
+nmap("<leader>wk", "<cmd>vertical resize +50<CR>", "Window Bigger")
+nmap("<leader>wj", "<cmd>vertical resize +50<CR>", "Window Smaller")
 -- treesitter
 
 -- database
