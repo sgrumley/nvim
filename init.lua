@@ -1,24 +1,21 @@
---[[
-  File: init.lua
-  Description: Entry point file for neovim
-]]
+require "core"
 
--- Bootsraping plugin manager
-require("lazy-bootstrap")
+local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
--- Settings
-require("config.settings")
-require("config.keybindings")
+if custom_init_path then
+  dofile(custom_init_path)
+end
 
--- Plugin management {{{
-require("lazy").setup({
-  { import = "base.dashboard" },
-  { import = "base.lsp" },
-  { import = "base.lang" },
-  { import = "base.search" },
-  { import = "base.test" },
-  { import = "plugins" },
-}, {})
--- }}}
+require("core.utils").load_mappings()
 
--- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+
+-- bootstrap lazy.nvim!
+if not vim.loop.fs_stat(lazypath) then
+  require("core.bootstrap").gen_chadrc_template()
+  require("core.bootstrap").lazy(lazypath)
+end
+
+dofile(vim.g.base46_cache .. "defaults")
+vim.opt.rtp:prepend(lazypath)
+require "plugins"
