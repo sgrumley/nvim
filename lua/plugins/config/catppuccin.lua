@@ -11,12 +11,16 @@ catppuccin.setup({
         noice = true,
         telescope = {
             enabled = true,
+            style = "nvchad",
         },
         illuminate = {
             enabled = true, 
             lsp = false,
         },
-    }
+    },
+    -- config = function()
+    --   vim.cmd.colorscheme("catppuccin")
+    -- end,
 })
 
-vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("catppuccin")

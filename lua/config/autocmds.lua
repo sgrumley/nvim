@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		"tsplayground",
 		"vim",
 		"neoai-input",
+		"neotest",
 		"neoai-output",
 		"notify",
 	},

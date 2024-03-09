@@ -125,7 +125,10 @@ return {
 			adapters = {
 				["neotest-go"] = {
 					-- Here we can set options for neotest-go, e.g.
-					-- args = { "-tags=integration" }
+					experimental = {
+						test_table = true,
+					},
+					args = { "-count=1", "-timeout=15s"} -- , "| tparse -format=markdown" },
 				},
 			},
 		},

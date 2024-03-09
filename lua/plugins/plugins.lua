@@ -202,8 +202,24 @@ return {
 				section_separators = { left = "", right = "" },
 				component_separators = "|",
 			},
+			sections = {
+				lualine_c = {
+					-- TODO: center the commented icons
+					-- "        "
+					'hostname'
+				},
+			}
 		},
 	},
+	 {
+ "folke/trouble.nvim",
+ dependencies = { "nvim-tree/nvim-web-devicons" },
+ opts = {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+ },
+},
 
 	-- Neo Tree / could be replaced oil {{{
 	{
@@ -233,9 +249,28 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+		integrations = {
+			cmp = true,
+			gitsigns = true, 
+			treesitter = true,
+			harpoon = true,
+			dap = true, 
+			dap_ui = true,
+			noice = true,
+			telescope = {
+				enabled = true,
+			},
+			illuminate = {
+				enabled = true, 
+				lsp = false,
+			},
+		},
 		config = function()
-			require('plugins.config.catppuccin')
+			vim.cmd.colorscheme("catppuccin")
 		end,
+		-- config = function()
+		-- 	require('plugins.config.catppuccin')
+		-- end,
 	},
 	-- }}}
 }
