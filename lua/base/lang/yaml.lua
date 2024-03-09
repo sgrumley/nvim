@@ -4,8 +4,7 @@ return {
 		opts = function(_, opts)
 			if type(opts.ensure_installed) == "table" then
 				vim.list_extend(opts.ensure_installed, {
-					"terraform",
-					"hcl",
+					"yaml",
 				})
 			end
 		end,
@@ -14,7 +13,7 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				terraformls = {},
+				yamllint = {},
 			},
 		},
 	},

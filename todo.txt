@@ -2,7 +2,6 @@ TODO -> Learn -> Install -> Try
 
 TODO:
 - refactor keymappings to more efficient maps
-  - leader q -> buffer quit
   - sort out testing / debugging -> remove overlap with diagnostics
   - name harpoon which key
   - remove leader c peek   
@@ -21,20 +20,24 @@ Install:
 - go test coverage https://github.com/rafaelsq/nvim-goc.lua (do this after attaching commands to the buffer)
 - dashboard
 
-Try out:
-- ray-x navigator
-- window control. works with telescope and more https://github.com/anuvyklack/hydra.nvim
-- https://github.com/LukasPietzschmann/telescope-tabs
-- https://github.com/kelly-lin/ranger.nvim
-- better word jumping, aimed at code rather than text https://github.com/chrisgrieser/nvim-spider 
-- like telescope symbol viewer but aims at navigating the current file  https://github.com/SmiteshP/nvim-navbuddy | can telescope do this?
-- https://github.com/RRethy/vim-illuminate
-- telescope compatible clipboard https://github.com/AckslD/nvim-neoclip.lua
-- https://github.com/crusj/structrue-go.nvim  // symbols for go with pane and peek windows
-- https://github.com/weilbith/nvim-code-action-menu // code action menu. If this menu displays all code actions in the file might be worth
-- https://github.com/jinzhongjia/LspUI.nvim/wiki/Screen-Shot // ui for all the lsp actions. This could be good early and once used to things delete
 
-
+TODO:
+https://github.com/sownteedev/TeVim/blob/v2.0/lua/tevim/plugins/init.lua
+how to get lualine +
+{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
 
 
 

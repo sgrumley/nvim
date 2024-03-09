@@ -1,63 +1,47 @@
---[[
-  File: settings.lua
-  Description: Base settings for neovim
-  Info: Use <zo> and <zc> to open and close foldings
-]]
-
-require("helpers/globals")
-
 -- Set associating between turned on plugins and filetype
 cmd([[filetype plugin on]])
 
 -- Disable comments on pressing Enter
 cmd([[autocmd FileType * setlocal formatoptions-=cro]])
 
--- Tabs {{{
+-- Tabs 
 opt.expandtab = true   -- Use spaces by default
 opt.shiftwidth = 2     -- Set amount of space characters, when we press "<" or ">"
 opt.tabstop = 2        -- 1 tab equal 2 spaces
 opt.smartindent = true -- Turn on smart indentation. See in the docs for more info
--- }}}
 
--- Clipboard {{{
+-- Clipboard 
 opt.clipboard = "unnamedplus" -- Use system clipboard
 opt.fixeol = false            -- Turn off appending new line in the end of a file
--- }}}
 
--- Folding {{{
+-- Folding 
 opt.foldmethod = "syntax"
--- }}}
 
--- Line Number {{{
+-- Line Number 
 opt.number = true
-opt.relativenumber = true
--- }}}
+opt.relativenumber = false
 
--- Search {{{
+-- Search 
 opt.ignorecase = true  -- Ignore case if all characters in lower case
 opt.joinspaces = false -- Join multiple spaces in search
 opt.smartcase = true   -- When there is a one capital letter search for exact match
 opt.showmatch = true   -- Highlight search instances
 opt.incsearch = true   -- incremental searching as you type
--- }}}
 
--- Window {{{
+-- Window 
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new vertical splits to right
--- }}}
 
--- Wild Menu {{{
+-- Wild Menu 
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
--- }}}
 
--- Quality Of Life {{{
+-- Quality Of Life 
 vim.o.termguicolors = true
 vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better completion experience
 vim.o.undofile = true                  -- Save undo history
 vim.o.breakindent = true               -- Enable break indent
 opt.signcolumn = "yes"                 -- reserves room on the left side of the buffer for things such as error markers or break points
--- }}}
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

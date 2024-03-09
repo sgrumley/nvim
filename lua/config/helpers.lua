@@ -20,3 +20,4 @@ end
 function tmap(keys, func, desc)
 	vim.keymap.set("t", keys, func, { buffer = bufnr, desc = desc })
 end
+

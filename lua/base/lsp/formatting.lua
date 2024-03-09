@@ -1,3 +1,4 @@
+-- TODO: figure out how to only format on save for certain languages
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
@@ -40,3 +41,4 @@ return {
     end, { desc = "Format file or range (in visual mode)" })
   end,
 }
+
