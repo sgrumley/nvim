@@ -159,6 +159,9 @@ return {
 		opts = {
 			-- configurations go here
 		},
+		-- config = function()
+		-- 	theme = "catppuccin",
+		-- end,
 	},
 	-- nicer cmd mode input
 	{
@@ -196,8 +199,8 @@ return {
 			options = {
 				icons_enabled = true,
 				theme = "catppuccin",
+				section_separators = { left = "", right = "" },
 				component_separators = "|",
-				section_separators = "",
 			},
 		},
 	},
@@ -231,7 +234,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("catppuccin-mocha")
+			require('plugins.config.catppuccin')
 		end,
 	},
 	-- }}}
