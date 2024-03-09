@@ -17,24 +17,23 @@ nmap("<leader>mt", "<cmd>Telescope<CR>", "[M]enu [T]elescope")
 nmap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic")
 nmap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic")
 nmap("<leader>do", "<cmd>lua vim.diagnostic.open_float()<CR>", "[D]iagnostic [O]pen Float")
-nmap("<leader>dl", "<cmd>lua vim.diagnostic.setloclist()<CR>", "[D]iagnostic [L]oclist")
+
+nmap("[e", "<cmd>lua vim.error.goto_next()<CR>", "Next Diagnostic")
+nmap("]e", "<cmd>lua vim.error.goto_prev()<CR>", "Next Diagnostic")
+nmap("[w]", "<cmd>lua vim.warning.goto_next()<CR>", "Next Diagnostic")
+nmap("]w", "<cmd>lua vim.warning.goto_prev()<CR>", "Next Diagnostic")
 
 -- LSP 
-nmap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", "Show Documentation")
-nmap("C-k", "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help") -- this might be replaced with plugin
-nmap("<leader>ck", "<cmd>lua require('lsp_signature').toggle_float_win()<CR>", "Foating Signature Help")
-nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[g]oto [Declaration]")
-nmap("gd", "<cmd>Telescope lsp_definitions<CR>", "[g]oto [d]efinitions")
-nmap("gr", "<cmd>Telescope lsp_references<CR>", "[g]oto [r]eferences")
-nmap("gI", "<cmd>Telescope lsp_implementations<CR>", "[g]oto [I]mplementations")
+-- nmap("<leader>ck", "<cmd>lua require('lsp_signature').toggle_float_win()<CR>", "Foating Signature Help")
+-- nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[g]oto [Declaration]")
 
 -- code
-nmap("<leader>cd", "<cmd>Telescope lsp_type_definitions<CR>", "List Type Definitions")
-nmap("<leader>ci", "<cmd>Telescope lsp_implementations<CR>", "List Implementations")
-nmap("<leader>cs", "<cmd>Telescope lsp_document_symbols<CR>", "List Document Symbols")
-nmap("<leader>cw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "List Workspace Symbols") -- this is super slow, need to be careful with it or filter vendor
-nmap("<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "[C]ode [R]ename")
-nmap("<leader>ca", "<cmd>lua  vim.lsp.buf.code_action()<cr>", "[C]ode [A]ction")
+-- nmap("<leader>cd", "<cmd>Telescope lsp_type_definitions<CR>", "List Type Definitions")
+-- nmap("<leader>ci", "<cmd>Telescope lsp_implementations<CR>", "List Implementations")
+-- nmap("<leader>cs", "<cmd>Telescope lsp_document_symbols<CR>", "List Document Symbols")
+-- nmap("<leader>cw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "List Workspace Symbols") -- this is super slow, need to be careful with it or filter vendor
+-- nmap("<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "[C]ode [R]ename")
+-- nmap("<leader>ca", "<cmd>lua  vim.lsp.buf.code_action()<cr>", "[C]ode [A]ction")
 
 -- Go 
 -- TODO: this doesn't work
