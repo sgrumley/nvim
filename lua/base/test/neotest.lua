@@ -1,4 +1,4 @@
-eturn({
+return {
 	{
 		"folke/which-key.nvim",
 		optional = true,
@@ -126,4 +126,4 @@ eturn({
       { "<leader>td", function() require("neotest").run.run({strategy = "dap"}) end, desc = "Debug Nearest" },
     },
 	},
-})
+}
