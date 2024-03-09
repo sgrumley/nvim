@@ -35,6 +35,7 @@ nmap("]w", "<cmd>lua vim.warning.goto_prev()<CR>", "Next Diagnostic")
 -- nmap("<leader>ca", "<cmd>lua  vim.lsp.buf.code_action()<cr>", "[C]ode [A]ction")
 
 -- Go
+-- nmap("<leader>s","<cmd>GoTestCurrentFile<CR>", "go test tparse" )
 -- TODO: this doesn't work
 nmap("<leader>lgi", "<cmd>GoImport<CR>", "[L]anguage [G]o [I]mport")
 nmap("<leader>lgt", "<cmd>GoAddTag<CR>", "[L]anguage [G]o Add Struct [T]ags")
@@ -44,6 +45,10 @@ nmap("<leader>lgo", "<cmd>GoPkgOutline -f<CR>", "[L]anguage [G]o Package [O]utli
 -- GoCodeLensAct will activate code lens but requires it to be activated in gopls
 
 -- Todo figure out if I want fugitive. Need some more research
+nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
+nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
+nmap("<leader>gml", "<cmd>diffget //2<cr>", "Git Merge Left")
+nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
 -- :DiffviewOpen
 -- :DiffviewOpen HEAD~2
 -- :DiffviewOpen HEAD~4..HEAD~2
@@ -66,8 +71,10 @@ nmap("<leader>wq", "<cmd>wincmd q<CR>", "Quit Window")
 nmap("<leader>ws", "<cmd>vsplit<CR>", "Window Split")
 nmap("<leader>wf", "<cmd>wincmd |<CR>", "Window Focus")
 nmap("<leader>wr", "<cmd>wincmd =<CR>", "Window Reset Size")
-nmap("<leader>wk", "<cmd>vertical resize +50<CR>", "Window Bigger")
-nmap("<leader>wj", "<cmd>vertical resize +50<CR>", "Window Smaller")
+nmap("<leader>wl", "<cmd>vertical resize +50<CR>", "Window Bigger")
+nmap("<leader>wh", "<cmd>vertical resize -50<CR>", "Window Smaller")
+nmap("<leader>wk", "<cmd>resize +8<CR>", "Horizontal Window Bigger")
+nmap("<leader>wj", "<cmd>resize -8<CR>", "Horizontal Window Smaller")
 
 -- general {{{
 local keymap = vim.keymap.set

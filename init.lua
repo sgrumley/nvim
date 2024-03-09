@@ -19,3 +19,5 @@ require("lazy").setup({
 	{ import = "base.lang" },
 	{ import = "plugins" },
 }, {})
+
+-- require("config.go-test")
