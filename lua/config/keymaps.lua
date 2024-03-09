@@ -3,17 +3,16 @@ require("config.helpers")
 
 g.mapleader = " "
 
--- Neovim 
+-- Neovim
 nmap("<leader>q", "<cmd>q!<CR>", "Force Quit")
 nmap("<leader>cl", "<cmd>noh<CR>", "Clear Search Highlight")
 
-
--- Plugin Menus 
+-- Plugin Menus
 nmap("<leader>ml", "<cmd>Lazy home<CR>", "[M]enu [L]azy")
 nmap("<leader>mm", "<cmd>Mason<CR>", "[M]enu [M]ason")
 nmap("<leader>mt", "<cmd>Telescope<CR>", "[M]enu [T]elescope")
 
--- Diagnostic 
+-- Diagnostic
 nmap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous Diagnostic")
 nmap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic")
 nmap("<leader>do", "<cmd>lua vim.diagnostic.open_float()<CR>", "[D]iagnostic [O]pen Float")
@@ -23,7 +22,7 @@ nmap("]e", "<cmd>lua vim.error.goto_prev()<CR>", "Next Diagnostic")
 nmap("[w]", "<cmd>lua vim.warning.goto_next()<CR>", "Next Diagnostic")
 nmap("]w", "<cmd>lua vim.warning.goto_prev()<CR>", "Next Diagnostic")
 
--- LSP 
+-- LSP
 -- nmap("<leader>ck", "<cmd>lua require('lsp_signature').toggle_float_win()<CR>", "Foating Signature Help")
 -- nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[g]oto [Declaration]")
 
@@ -35,7 +34,7 @@ nmap("]w", "<cmd>lua vim.warning.goto_prev()<CR>", "Next Diagnostic")
 -- nmap("<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "[C]ode [R]ename")
 -- nmap("<leader>ca", "<cmd>lua  vim.lsp.buf.code_action()<cr>", "[C]ode [A]ction")
 
--- Go 
+-- Go
 -- TODO: this doesn't work
 nmap("<leader>lgi", "<cmd>GoImport<CR>", "[L]anguage [G]o [I]mport")
 nmap("<leader>lgt", "<cmd>GoAddTag<CR>", "[L]anguage [G]o Add Struct [T]ags")
@@ -70,7 +69,6 @@ nmap("<leader>wr", "<cmd>wincmd =<CR>", "Window Reset Size")
 nmap("<leader>wk", "<cmd>vertical resize +50<CR>", "Window Bigger")
 nmap("<leader>wj", "<cmd>vertical resize +50<CR>", "Window Smaller")
 
-
 -- general {{{
 local keymap = vim.keymap.set
 -- Remap for dealing with word wrap
@@ -93,7 +91,7 @@ keymap("v", ">", ">gv")
 
 -- When deleting text don't copy over yank
 keymap("n", "DD", "dd") -- CUT
-keymap("v", "D", "d")   -- CUT
+keymap("v", "D", "d") -- CUT
 
 keymap("n", "dd", '"_dd')
 keymap("v", "d", '"_d')
@@ -109,11 +107,11 @@ keymap("n", "[<Space>", "O<Esc>")
 
 -- Auto indent
 keymap("n", "i", function()
-  if #vim.fn.getline(".") == 0 then
-    return [["_cc]]
-  else
-    return "i"
-  end
+	if #vim.fn.getline(".") == 0 then
+		return [["_cc]]
+	else
+		return "i"
+	end
 end, { expr = true })
 -- }}}
 

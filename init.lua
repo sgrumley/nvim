@@ -10,12 +10,12 @@ require("lazy-bootstrap")
 require("config.keymaps")
 require("config.options")
 
--- Plugin management 
+-- Plugin management
 require("lazy").setup({
---   { import = "base.dashboard" },
-  { import = "base.search" },
-  { import = "base.lsp" },
-  { import = "base.test" },
-  { import = "base.lang" },
-  { import = "plugins" },
+	--   { import = "base.dashboard" },
+	{ import = "base.search" },
+	{ import = "base.lsp" },
+	{ import = "base.test" },
+	{ import = "base.lang" },
+	{ import = "plugins" },
 }, {})

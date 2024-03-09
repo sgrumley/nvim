@@ -1,7 +1,7 @@
 local gt = require("goto-preview")
 gt.setup({
-    height = 25,
-    width = 150,
+	height = 25,
+	width = 150,
 })
 
 -- keymaps
@@ -11,4 +11,3 @@ nmap("gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>"
 nmap("gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", "[P]eek Type Declaration")
 nmap("gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", "[P]eek Type Declaration")
 nmap("gP", "<cmd>lua require('goto-preview').goto_preview_close_all_win()<CR>", "[P]eek Type Declaration")
-
