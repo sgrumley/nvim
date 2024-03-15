@@ -1,3 +1,11 @@
+local function moons()
+	return [[          ]]
+end
+
+local function bloodangel()
+	return [[  ]]
+end
+
 return {
 	-- Navigation
 	{
@@ -181,6 +189,23 @@ return {
 		event = "InsertEnter",
 		opts = {},
 	},
+	-- better vim.ui
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -188,10 +213,31 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
+		keys = {
+			{
+				"]t",
+				function()
+					require("todo-comments").jump_next()
+				end,
+				desc = "Next todo comment",
+			},
+			{
+				"[t",
+				function()
+					require("todo-comments").jump_prev()
+				end,
+				desc = "Previous todo comment",
+			},
+			{ "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+			{ "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+			{ "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+			{ "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+		},
 	},
 
 	-- Status Line
 	{
+		-- TODO: move to own config file
 		-- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
 		-- See `:help lualine.txt`
@@ -200,26 +246,25 @@ return {
 				icons_enabled = true,
 				theme = "catppuccin",
 				section_separators = { left = "", right = "" },
-				component_separators = "|",
+				component_separators = " ",
 			},
 			sections = {
 				lualine_c = {
-					-- TODO: center the commented icons
-					-- "        "
-					'hostname'
+					"%=",
+					{ moons },
 				},
-			}
+			},
 		},
 	},
-	 {
- "folke/trouble.nvim",
- dependencies = { "nvim-tree/nvim-web-devicons" },
- opts = {
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  -- refer to the configuration section below
- },
-},
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
 
 	-- Neo Tree / could be replaced oil {{{
 	{
@@ -251,17 +296,17 @@ return {
 		priority = 1000,
 		integrations = {
 			cmp = true,
-			gitsigns = true, 
+			gitsigns = true,
 			treesitter = true,
 			harpoon = true,
-			dap = true, 
+			dap = true,
 			dap_ui = true,
 			noice = true,
 			telescope = {
 				enabled = true,
 			},
 			illuminate = {
-				enabled = true, 
+				enabled = true,
 				lsp = false,
 			},
 		},

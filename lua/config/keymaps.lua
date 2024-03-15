@@ -26,13 +26,16 @@ nmap("]w", "<cmd>lua vim.warning.goto_prev()<CR>", "Next Diagnostic")
 -- nmap("<leader>ck", "<cmd>lua require('lsp_signature').toggle_float_win()<CR>", "Foating Signature Help")
 -- nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[g]oto [Declaration]")
 
--- code
--- nmap("<leader>cd", "<cmd>Telescope lsp_type_definitions<CR>", "List Type Definitions")
--- nmap("<leader>ci", "<cmd>Telescope lsp_implementations<CR>", "List Implementations")
--- nmap("<leader>cs", "<cmd>Telescope lsp_document_symbols<CR>", "List Document Symbols")
--- nmap("<leader>cw", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "List Workspace Symbols") -- this is super slow, need to be careful with it or filter vendor
--- nmap("<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", "[C]ode [R]ename")
--- nmap("<leader>ca", "<cmd>lua  vim.lsp.buf.code_action()<cr>", "[C]ode [A]ction")
+-- Clear search with <esc>
+nmap("<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- move lines
+nmap("<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+nmap("<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+imap("<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+imap("<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+vmap("<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+vmap("<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Go
 -- nmap("<leader>s","<cmd>GoTestCurrentFile<CR>", "go test tparse" )
