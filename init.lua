@@ -12,7 +12,7 @@ require("config.options")
 
 -- Plugin management
 require("lazy").setup({
-	--   { import = "base.dashboard" },
+	{ import = "base.dashboard" },
 	{ import = "base.search" },
 	{ import = "base.lsp" },
 	{ import = "base.test" },

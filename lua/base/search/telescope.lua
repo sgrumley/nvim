@@ -31,6 +31,7 @@ return {
 			{ "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
 			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+			{ "<leader>fP", "<cmd>Telescope neovim-project discover<CR>", desc = "[F]ind [P]rojects" },
 		},
 		opts = {
 			defaults = {
