@@ -1,5 +1,5 @@
 local function moons()
-	return [[          ]]
+	return [[          ]]
 end
 
 local function bloodangel()
