@@ -1,4 +1,7 @@
 TODO -> Learn -> Install -> Try
+add file comments to each file and merge in my own config
+-> get working
+-> change mapping functions?
 
 TODO:
 - refactor keymappings to more efficient maps
