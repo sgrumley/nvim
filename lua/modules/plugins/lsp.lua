@@ -61,9 +61,7 @@ lsp["neovim/nvim-lspconfig"] = {
 		config = require("lsp.lspconfig")
 }
 
-lsp["williamboman/mason.nvim"] = {
-
-}
+lsp["williamboman/mason.nvim"] = { }
 
 lsp["nvim-treesitter/nvim-treesitter"] = {
 "nvim-treesitter/nvim-treesitter",
@@ -75,3 +73,5 @@ lsp["nvim-treesitter/nvim-treesitter"] = {
 		event = { "BufReadPost", "BufNewFile" },
         config = require("lsp.treesitter")
 }
+
+return lsp

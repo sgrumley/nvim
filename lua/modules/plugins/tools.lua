@@ -1,8 +1,8 @@
 local tools = {}
 -- Tooling
 -- Database Client
-{
-	"kristijanhusak/vim-dadbod-ui",
+
+tools["kristijanhusak/vim-dadbod-ui"] = {
 	dependencies = {
 		{ "tpope/vim-dadbod", lazy = true },
 		{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
@@ -20,12 +20,12 @@ local tools = {}
 }
 
 -- GRPC Client
-["hudclark/grpc-nvim"] = { 
+tools["hudclark/grpc-nvim"] = { 
 	dependencies = { { "nvim-lua/plenary.nvim" } },
 }
 
 -- REST Client
-tooling["rest-nvim/rest.nvim"]{
+tools["rest-nvim/rest.nvim"]{
 	dependencies = { { "nvim-lua/plenary.nvim" } },
 	config = require("tools.rest-nvim"),
 }
@@ -34,3 +34,5 @@ tooling["rest-nvim/rest.nvim"]{
 tools["folke/which-key.nvim"] =	{
 	config = require("plugins.config.whichkey"),
 }
+
+return tools
