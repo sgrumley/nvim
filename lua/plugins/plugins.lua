@@ -1,5 +1,6 @@
+-- TODO: move to settings
 local function moons()
-	return [[          ]]
+	return [[          ]]
 end
 
 local function bloodangel()
@@ -141,6 +142,55 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		opts = {},
+	},
+	{
+		"roobert/surround-ui.nvim",
+		dependencies = {
+			"kylechui/nvim-surround",
+			"folke/which-key.nvim",
+		},
+		config = function()
+			require("surround-ui").setup({
+				root_key = "S",
+			})
+		end,
+	},
+	{
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup()
+			require("telescope").load_extension("projects")
+			-- require'telescope'.extensions.projects.projects{}
+		end,
+	},
+	-- TODO: set <leader>m to map each mark, set menu to leader M
+	-- https://github.com/chentoast/marks.nvim
+	{
+		"chentoast/marks.nvim",
+		config = function()
+			require("marks").setup()
+		end,
+	},
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		config = function()
+			local oil = require("oil")
+			oil.setup()
+			vim.keymap.set("n", "-", oil.toggle_float, {})
+		end,
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			require("nvim-tmux-navigation").setup({})
+			vim.keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", {})
+			vim.keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", {})
+			vim.keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", {})
+			vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
+		end,
 	},
 	-- comment
 	{

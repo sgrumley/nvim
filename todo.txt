@@ -1,12 +1,6 @@
-TODO -> Learn -> Install -> Try
-
 TODO:
 - refactor keymappings to more efficient maps
   - sort out testing / debugging -> remove overlap with diagnostics
-  - name harpoon which key
-  - remove leader c peek   
-  - fill out the git shortcuts with fugitive as well
-- decide how I best like symbol out lines
 - only attach commands based on buffer. e.g all go commands can move into <leader>l once I attach them to go files
 - go through each plugin and stabalize (optimize/ clean). Is it needed? 
 
@@ -16,28 +10,7 @@ Learn:
 - fugitive git merge
 - surround
 
-Install:
-- go test coverage https://github.com/rafaelsq/nvim-goc.lua (do this after attaching commands to the buffer)
-- dashboard
 
-
-TODO:
-https://github.com/sownteedev/TeVim/blob/v2.0/lua/tevim/plugins/init.lua
-how to get lualine +
-{
-		"stevearc/dressing.nvim",
-		lazy = true,
-		init = function()
-			vim.ui.select = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.select(...)
-			end
-			vim.ui.input = function(...)
-				require("lazy").load({ plugins = { "dressing.nvim" } })
-				return vim.ui.input(...)
-			end
-		end,
-	},
-
-
-
+Install: 
+- https://github.com/SalOrak/whaler.nvim
+- https://github.com/anuvyklack/windows.nvim
