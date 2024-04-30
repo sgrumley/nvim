@@ -5,14 +5,14 @@ editor["ThePrimeagen/harpoon"]	= {
 		-- keys = function()
 		-- 	require("plugins.config.harpoon")
 		-- end,
-},
+}
 	
 editor["folke/flash.nvim"] = {
 		event = "VeryLazy",
 		-- keys = function()
 		-- 	require("plugins.config.flash")
 		-- end,
-},
+}
 
 -- Git
 
@@ -21,7 +21,7 @@ editor["sindrets/diffview.nvim"] = {}
 editor[ "tpope/vim-fugitive" ] = {}
 
 editor["lewis6991/gitsigns.nvim" ] = {
-		config = require("plugins.config.gitsigns")
+		config = require("modules.config.gitsigns")
 }
 
 
@@ -53,7 +53,7 @@ editor["stevearc/dressing.nvim"] = {
 				return vim.ui.input(...)
 			end
 		end,
-	},
+	}
 
 editor["petertriho/nvim-scrollbar"] = {
 		opts = {},
