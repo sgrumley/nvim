@@ -18,3 +18,6 @@ neotree.setup({
     follow_current_file = true,
   },
 })
+
+-- keymaps
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree filesystem reveal float<CR>")
