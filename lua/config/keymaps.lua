@@ -27,15 +27,15 @@ nmap("]w", "<cmd>lua vim.warning.goto_prev()<CR>", "Next Diagnostic")
 -- nmap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", "[g]oto [Declaration]")
 
 -- Clear search with <esc>
-nmap("<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+nmap("<esc>", "<cmd>noh<cr><esc>",  "Escape and clear hlsearch") 
 
 -- move lines
-nmap("<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-nmap("<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-imap("<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-imap("<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-vmap("<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-vmap("<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+nmap("<A-j>", "<cmd>m .+1<cr>==", "Move down")
+nmap("<A-k>", "<cmd>m .-2<cr>==", "Move up" )
+imap("<A-j>", "<esc><cmd>m .+1<cr>==gi",  "Move down" )
+imap("<A-k>", "<esc><cmd>m .-2<cr>==gi",  "Move up" )
+vmap("<A-j>", ":m '>+1<cr>gv=gv",  "Move down" )
+vmap("<A-k>", ":m '<-2<cr>gv=gv",  "Move up" )
 
 -- Go
 -- nmap("<leader>s","<cmd>GoTestCurrentFile<CR>", "go test tparse" )
