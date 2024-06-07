@@ -1,13 +1,6 @@
-TODO -> Learn -> Install -> Try
-
 TODO:
 - refactor keymappings to more efficient maps
-  - leader q -> buffer quit
   - sort out testing / debugging -> remove overlap with diagnostics
-  - name harpoon which key
-  - remove leader c peek   
-  - fill out the git shortcuts with fugitive as well
-- decide how I best like symbol out lines
 - only attach commands based on buffer. e.g all go commands can move into <leader>l once I attach them to go files
 - go through each plugin and stabalize (optimize/ clean). Is it needed? 
 
@@ -17,24 +10,7 @@ Learn:
 - fugitive git merge
 - surround
 
-Install:
-- go test coverage https://github.com/rafaelsq/nvim-goc.lua (do this after attaching commands to the buffer)
-- dashboard
 
-Try out:
-- ray-x navigator
-- window control. works with telescope and more https://github.com/anuvyklack/hydra.nvim
-- https://github.com/LukasPietzschmann/telescope-tabs
-- https://github.com/kelly-lin/ranger.nvim
-- better word jumping, aimed at code rather than text https://github.com/chrisgrieser/nvim-spider 
-- like telescope symbol viewer but aims at navigating the current file  https://github.com/SmiteshP/nvim-navbuddy | can telescope do this?
-- https://github.com/RRethy/vim-illuminate
-- telescope compatible clipboard https://github.com/AckslD/nvim-neoclip.lua
-- https://github.com/crusj/structrue-go.nvim  // symbols for go with pane and peek windows
-- https://github.com/weilbith/nvim-code-action-menu // code action menu. If this menu displays all code actions in the file might be worth
-- https://github.com/jinzhongjia/LspUI.nvim/wiki/Screen-Shot // ui for all the lsp actions. This could be good early and once used to things delete
-
-
-
-
-
+Install: 
+- https://github.com/SalOrak/whaler.nvim
+- https://github.com/anuvyklack/windows.nvim

@@ -1,111 +1,95 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "ninja", "python", "rst", "toml" })
-    end,
-  },
-  -- { TODO: replace with nvim-lint + conform
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   opts = function(_, opts)
-  --     local nls = require "null-ls"
-  --     table.insert(opts.sources, nls.builtins.formatting.black)
-  --   end,
-  -- },
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "debugpy", "black", "ruff" })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        ruff_lsp = {},
-        pyright = {
-          settings = {
-            python = {
-              analysis = {
-                autoImportCompletions = true,
-                typeCheckingMode = "off",
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "openFilesOnly", -- "openFilesOnly" or "openFilesOnly"
-                stubPath = vim.fn.stdpath("data") .. "/lazy/python-type-stubs/stubs",
-              },
-            },
-          },
-        },
-      },
-      setup = {
-        ruff_lsp = function()
-          local lsp_utils = require("helpers.util")
-          lsp_utils.on_attach(function(client, _)
-            if client.name == "ruff_lsp" then
-              -- Disable hover in favor of Pyright
-              client.server_capabilities.hoverProvider = false
-            end
-          end)
-        end,
-        pyright = function(_, _)
-          local lsp_utils = require("helpers.util")
-          lsp_utils.on_attach(function(client, bufnr)
-            local map = function(mode, lhs, rhs, desc)
-              if desc then
-                desc = desc
-              end
-              vim.keymap.set(
-                mode,
-                lhs,
-                rhs,
-                { silent = true, desc = desc, buffer = bufnr, noremap = true }
-              )
-            end
-            -- stylua: ignore
-            if client.name == "pyright" then
-              map("n", "<leader>lo", "<cmd>PyrightOrganizeImports<cr>", "Organize Imports")
-              map("n", "<leader>lC", function() require("dap-python").test_class() end, "Debug Class")
-              map("n", "<leader>lM", function() require("dap-python").test_method() end, "Debug Method")
-              map("v", "<leader>lE", function() require("dap-python").debug_selection() end, "Debug Selection")
-            end
-          end)
-        end,
-      },
-    },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      "mfussenegger/nvim-dap-python",
-      config = function()
-        local path = require("mason-registry").get_package("debugpy"):get_install_path()
-        require("dap-python").setup(path .. "/venv/bin/python")
-      end,
-    },
-  },
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-neotest/neotest-python",
-    },
-    opts = function(_, opts)
-      vim.list_extend(opts.adapters, {
-        require("neotest-python")({
-          dap = { justMyCode = false },
-          runner = "unittest",
-        }),
-      })
-    end,
-  },
-  {
-    "microsoft/python-type-stubs",
-    cond = false,
-  },
-  {
-    "linux-cultist/venv-selector.nvim",
-    cmd = "VenvSelect",
-    opts = {},
-    keys = { { "<leader>lv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
-  },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = function(_, opts)
+			if type(opts.ensure_installed) == "table" then
+				vim.list_extend(opts.ensure_installed, { "ninja", "python", "rst", "toml" })
+			end
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				pyright = {},
+				ruff_lsp = {
+					keys = {
+						{
+							"<leader>co",
+							function()
+								vim.lsp.buf.code_action({
+									apply = true,
+									context = {
+										only = { "source.organizeImports" },
+										diagnostics = {},
+									},
+								})
+							end,
+							desc = "Organize Imports",
+						},
+					},
+				},
+			},
+			setup = {
+				ruff_lsp = function()
+					require("lazyvim.util").lsp.on_attach(function(client, _)
+						if client.name == "ruff_lsp" then
+							-- Disable hover in favor of Pyright
+							client.server_capabilities.hoverProvider = false
+						end
+					end)
+				end,
+			},
+		},
+	},
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	optional = true,
+	-- 	dependencies = {
+	-- 		"nvim-neotest/neotest-python",
+	-- 	},
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			["neotest-python"] = {
+	-- 				-- Here you can specify the settings for the adapter, i.e.
+	-- 				-- runner = "pytest",
+	-- 				-- python = ".venv/bin/python",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+	-- {
+	-- 	"mfussenegger/nvim-dap",
+	-- 	optional = true,
+	-- 	dependencies = {
+	-- 		"mfussenegger/nvim-dap-python",
+    --   -- stylua: ignore
+    --   keys = {
+    --     { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+    --     { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+    --   },
+	-- 		config = function()
+	-- 			local path = require("mason-registry").get_package("debugpy"):get_install_path()
+	-- 			require("dap-python").setup(path .. "/venv/bin/python")
+	-- 		end,
+	-- 	},
+	-- },
+	-- {
+	-- 	"linux-cultist/venv-selector.nvim",
+	-- 	cmd = "VenvSelect",
+	-- 	opts = function(_, opts)
+	-- 		if require("lazyvim.util").has("nvim-dap-python") then
+	-- 			opts.dap_enabled = true
+	-- 		end
+	-- 		return vim.tbl_deep_extend("force", opts, {
+	-- 			name = {
+	-- 				"venv",
+	-- 				".venv",
+	-- 				"env",
+	-- 				".env",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
+	-- },
 }

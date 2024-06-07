@@ -7,18 +7,17 @@
 require("lazy-bootstrap")
 
 -- Settings
-require("config.settings")
-require("config.keybindings")
+require("config.keymaps")
+require("config.options")
 
--- Plugin management {{{
+-- Plugin management
 require("lazy").setup({
-  { import = "base.dashboard" },
-  { import = "base.lsp" },
-  { import = "base.lang" },
-  { import = "base.search" },
-  { import = "base.test" },
-  { import = "plugins" },
+	{ import = "base.dashboard" },
+	{ import = "base.search" },
+	{ import = "base.lsp" },
+	{ import = "base.test" },
+	{ import = "base.lang" },
+	{ import = "plugins" },
 }, {})
--- }}}
 
--- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
+-- require("config.go-test")

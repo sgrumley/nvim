@@ -2,64 +2,35 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
-			vim.list_extend(opts.ensure_installed, { "go", "gomod", "gowork", "gosum" })
-		end,
-	},
-	-- { TODO: replace with nvim-lint and conform
-	-- 	"jose-elias-alvarez/null-ls.nvim",
-	-- 	opts = function(_, opts)
-	-- 		if type(opts.sources) == "table" then
-	-- 			local nls = require("null-ls")
-	-- 			vim.list_extend(opts.sources, {
-	-- 				nls.builtins.code_actions.gomodifytags,
-	-- 				nls.builtins.code_actions.impl,
-	-- 				nls.builtins.formatting.gofumpt,
-	-- 				nls.builtins.formatting.goimports_reviser,
-	-- 			})
-	-- 		end
-	-- 	end,
-	-- },
-	{
-		"williamboman/mason.nvim",
-		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, {
-				"delve",
-				"gotests",
-				"golangci-lint",
-				"gofumpt",
-				"goimports",
-				"golangci-lint-langserver",
-				"impl",
-				"gomodifytags",
-				"iferr",
-				"gotestsum",
+				"go",
+				"gomod",
+				"gowork",
+				"gosum",
 			})
 		end,
-	},
-	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {},
-		config = function(_, opts)
-			require("go").setup(opts)
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
 				gopls = {
+					keys = {
+						-- Workaround for the lack of a DAP strategy in neotest-go: https://github.com/nvim-neotest/neotest-go/issues/12
+						{ "<leader>td", "<cmd>lua require('dap-go').debug_test()<CR>", desc = "Debug Nearest (Go)" },
+					},
 					settings = {
 						gopls = {
-							analyses = {
-								unusedparams = true,
+							gofumpt = true,
+							codelenses = {
+								gc_details = false,
+								generate = true,
+								regenerate_cgo = true,
+								run_govulncheck = true,
+								test = true,
+								tidy = true,
+								upgrade_dependency = true,
+								vendor = true,
 							},
 							hints = {
 								assignVariableTypes = true,
@@ -70,41 +41,30 @@ return {
 								parameterNames = true,
 								rangeVariableTypes = true,
 							},
+							analyses = {
+								fieldalignment = true,
+								nilness = true,
+								unusedparams = true,
+								unusedwrite = true,
+								useany = true,
+							},
+							usePlaceholders = true,
+							completeUnimported = true,
 							staticcheck = true,
+							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
 							semanticTokens = true,
 						},
 					},
 				},
-				golangci_lint_ls = {},
 			},
 			setup = {
-				gopls = function(_, _)
-					local lsp_utils = require("helpers.util")
-					lsp_utils.on_attach(function(client, bufnr)
-						local map = function(mode, lhs, rhs, desc)
-							if desc then
-								desc = desc
-							end
-							vim.keymap.set(
-								mode,
-								lhs,
-								rhs,
-								{ silent = true, desc = desc, buffer = bufnr, noremap = true }
-							)
-						end
-						-- stylua: ignore
+				gopls = function(_, opts)
+					-- workaround for gopls not supporting semanticTokensProvider
+					-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+					require("lazyvim.util").lsp.on_attach(function(client, _)
 						if client.name == "gopls" then
-							map("n", "<leader>ly", "<cmd>GoModTidy<cr>", "Go Mod Tidy")
-							map("n", "<leader>lc", "<cmd>GoCoverage<Cr>", "Go Test Coverage")
-							map("n", "<leader>lt", "<cmd>GoTest<Cr>", "Go Test")
-							map("n", "<leader>lR", "<cmd>GoRun<Cr>", "Go Run")
-							map("n", "<leader>dT",
-								"<cmd>lua require('dap-go').debug_test()<cr>",
-								"Go Debug Test")
-
 							if not client.server_capabilities.semanticTokensProvider then
-								local semantic = client.config.capabilities.textDocument
-								.semanticTokens
+								local semantic = client.config.capabilities.textDocument.semanticTokens
 								client.server_capabilities.semanticTokensProvider = {
 									full = true,
 									legend = {
@@ -116,23 +76,61 @@ return {
 							end
 						end
 					end)
+					-- end workaround
 				end,
+			},
+		},
+	},
+	-- Ensure Go tools are installed
+	{
+		"williamboman/mason.nvim",
+		opts = function(_, opts)
+			opts.ensure_installed = opts.ensure_installed or {}
+			vim.list_extend(opts.ensure_installed, { "goimports", "gofumpt" })
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		optional = true,
+		opts = {
+			formatters_by_ft = {
+				go = { "goimports", "gofumpt" },
 			},
 		},
 	},
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = { "leoluz/nvim-dap-go", opts = {} },
+		optional = true,
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				opts = function(_, opts)
+					opts.ensure_installed = opts.ensure_installed or {}
+					vim.list_extend(opts.ensure_installed, { "delve" })
+				end,
+			},
+			{
+				"leoluz/nvim-dap-go",
+				config = true,
+			},
+		},
 	},
 	{
 		"nvim-neotest/neotest",
+		optional = true,
 		dependencies = {
 			"nvim-neotest/neotest-go",
 		},
-		opts = function(_, opts)
-			vim.list_extend(opts.adapters, {
-				require("neotest-go"),
-			})
-		end,
+		opts = {
+			adapters = {
+				["neotest-go"] = {
+					-- Here we can set options for neotest-go, e.g.
+					experimental = {
+						test_table = true,
+					},
+					args = { "-count=1", "-timeout=15s"} -- , "| tparse -format=markdown" },
+				},
+			},
+		},
 	},
 }
