@@ -1,16 +1,9 @@
 TODO:
-- refactor keymappings to more efficient maps
-  - sort out testing / debugging -> remove overlap with diagnostics
-- only attach commands based on buffer. e.g all go commands can move into <leader>l once I attach them to go files
-- go through each plugin and stabalize (optimize/ clean). Is it needed? 
-
 Learn: 
 - treesitter text objects
 - testing + debuggin
 - fugitive git merge
 - surround
 
-
-Install: 
-- https://github.com/SalOrak/whaler.nvim
-- https://github.com/anuvyklack/windows.nvim
+Refactor: 
+  any plugins with lots of settings should have a folder in config

@@ -30,3 +30,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
 	end,
 })
+
+-- TODO: get goto def in new split
+-- on_attach = function(client, bufnr)
+--   vim.keymap.set('n', 'gs',
+--   function()
+--     vim.cmd([[ vsplit ]])
+--     vim.lsp.buf.definition()
+--   end, bufopts)

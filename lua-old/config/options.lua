@@ -1,4 +1,9 @@
-require("config.globals")
+-- Set associating between turned on plugins and filetype
+cmd([[filetype plugin on]])
+
+-- Disable comments on pressing Enter
+cmd([[autocmd FileType * setlocal formatoptions-=cro]])
+
 -- Tabs
 opt.expandtab = true -- Use spaces by default
 opt.shiftwidth = 2 -- Set amount of space characters, when we press "<" or ">"
@@ -28,7 +33,7 @@ opt.foldmethod = "syntax"
 
 -- Line Number
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 
 -- Search
 opt.ignorecase = true -- Ignore case if all characters in lower case
