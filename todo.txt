@@ -6,4 +6,4 @@ Learn:
 - surround
 
 Refactor: 
-  any plugins with lots of settings should have a folder in config
+  any plugins with lots of settings should have a folder in config - this is pretty much done except for lspconfig
