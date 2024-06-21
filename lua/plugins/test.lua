@@ -12,17 +12,27 @@ end
 
 return {
 	"mfussenegger/nvim-dap",
-
 	dependencies = {
-
 		-- fancy UI for the debugger
 		{
 			"rcarriga/nvim-dap-ui",
-      -- stylua: ignore
-      keys = {
-        { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-        { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
-      },
+			keys = {
+				{
+					"<leader>du",
+					function()
+						require("dapui").toggle({})
+					end,
+					desc = "Dap UI",
+				},
+				{
+					"<leader>de",
+					function()
+						require("dapui").eval()
+					end,
+					desc = "Eval",
+					mode = { "n", "v" },
+				},
+			},
 			opts = {},
 			config = function(_, opts)
 				-- setup dap config by VsCode launch.json file
@@ -115,8 +125,8 @@ return {
 	-- 		)
 	-- 	end
 	-- end,
-    -- NOTE: below this is neotest. This might be a good idea to split into another file or move configs into config dir
-{
+	-- NOTE: below this is neotest. This might be a good idea to split into another file or move configs into config dir
+	{
 		"folke/which-key.nvim",
 		optional = true,
 		opts = {
@@ -165,34 +175,34 @@ return {
 			}, neotest_ns)
 
 			-- if require("lazyvim.util").has("trouble.nvim") then
-				opts.consumers = opts.consumers or {}
-				-- Refresh and auto close trouble after running tests
-				---@type neotest.Consumer
-				opts.consumers.trouble = function(client)
-					client.listeners.results = function(adapter_id, results, partial)
-						if partial then
-							return
-						end
-						local tree = assert(client:get_position(nil, { adapter = adapter_id }))
-
-						local failed = 0
-						for pos_id, result in pairs(results) do
-							if result.status == "failed" and tree:get_key(pos_id) then
-								failed = failed + 1
-							end
-						end
-						vim.schedule(function()
-							local trouble = require("trouble")
-							if trouble.is_open() then
-								trouble.refresh()
-								if failed == 0 then
-									trouble.close()
-								end
-							end
-						end)
-						return {}
+			opts.consumers = opts.consumers or {}
+			-- Refresh and auto close trouble after running tests
+			---@type neotest.Consumer
+			opts.consumers.trouble = function(client)
+				client.listeners.results = function(adapter_id, results, partial)
+					if partial then
+						return
 					end
+					local tree = assert(client:get_position(nil, { adapter = adapter_id }))
+
+					local failed = 0
+					for pos_id, result in pairs(results) do
+						if result.status == "failed" and tree:get_key(pos_id) then
+							failed = failed + 1
+						end
+					end
+					vim.schedule(function()
+						local trouble = require("trouble")
+						if trouble.is_open() then
+							trouble.refresh()
+							if failed == 0 then
+								trouble.close()
+							end
+						end
+					end)
+					return {}
 				end
+			end
 			-- end
 
 			if opts.adapters then
@@ -228,7 +238,7 @@ return {
       { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
       { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
       { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
-      { "<leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last" }, 
+      { "<leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last" },
       { "<leader>tw", function() require("neotest").watch.toggle() end, desc = "Watch Run" },
       { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
       { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },

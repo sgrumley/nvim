@@ -1,5 +1,5 @@
 -- TODO: this needs testing out on dockerfiles
- return {
+return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)

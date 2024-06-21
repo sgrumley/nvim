@@ -1,15 +1,9 @@
-return {
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			-- Automatically install LSPs and related tools to stdpath for neovim
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-
-			{ "j-hui/fidget.nvim", opts = {} },
-		},
-		config = function()
+-- NOTE: I am not sure why this doesn't work
+-- for now it is getting lspconfig from plugins/lsp/lspconfig.lua
+configs = {
+	opts = {},
+	config = {
+		function()
 			--  This function gets run when an LSP attaches to a particular buffer.
 			--    That is to say, every time a new file is opened that is associated with
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -147,25 +141,25 @@ return {
 					-- filetypes { ...},
 					-- capabilities = {},
 					settings = {
-						-- Lua = {
-						-- 	runtime = { version = "LuaJIT" },
-						-- 	workspace = {
-						-- 		checkThirdParty = false,
-						-- 		-- Tells lua_ls where to find all the Lua files that you have loaded
-						-- 		-- for your neovim configuration.
-						-- 		library = {
-						-- 			"${3rd}/luv/library",
-						-- 			unpack(vim.api.nvim_get_runtime_file("", true)),
-						-- 		},
-						-- 		-- If lua_ls is really slow on your computer, you can try this instead:
-						-- 		-- library = { vim.env.VIMRUNTIME },
-						-- 	},
-						-- 	completion = {
-						-- 		callSnippet = "Replace",
-						-- 	},
-						-- 	-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						-- 	-- diagnostics = { disable = { 'missing-fields' } },
-						-- },
+						Lua = {
+							runtime = { version = "LuaJIT" },
+							workspace = {
+								checkThirdParty = false,
+								-- Tells lua_ls where to find all the Lua files that you have loaded
+								-- for your neovim configuration.
+								library = {
+									"${3rd}/luv/library",
+									unpack(vim.api.nvim_get_runtime_file("", true)),
+								},
+								-- If lua_ls is really slow on your computer, you can try this instead:
+								-- library = { vim.env.VIMRUNTIME },
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
+							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+							-- diagnostics = { disable = { 'missing-fields' } },
+						},
 					},
 				},
 			}
@@ -201,3 +195,5 @@ return {
 		end,
 	},
 }
+
+return configs

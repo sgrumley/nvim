@@ -6,18 +6,14 @@ local function moons()
 	return [[          ]]
 end
 
-local function bloodangel()
-	return [[  ]]
-end
-
 return {
-    {
+	{
 		"folke/which-key.nvim",
 		config = function()
 			require("plugins.config.ui.whichkey")
 		end,
 	},
-{
+	{
 		"folke/noice.nvim",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
@@ -32,13 +28,13 @@ return {
 			return require("plugins.config.ui.noice").keys
 		end,
 	},
-{
+	{
 		-- MINIMAP
 		"petertriho/nvim-scrollbar",
 		opts = {},
 		config = {},
 	},
-{
+	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
@@ -47,11 +43,11 @@ return {
 			-- refer to the configuration section below
 		},
 	},
-{
+	{
 		"RRethy/vim-illuminate",
 	},
-    -- alternative to neotree
-{
+	-- alternative to neotree
+	{
 		"stevearc/oil.nvim",
 		opts = {},
 		config = function()
@@ -62,7 +58,7 @@ return {
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-{
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		dependencies = {
@@ -73,7 +69,7 @@ return {
 			require("plugins.config.ui.neotree")
 		end,
 	},
--- Status Line
+	-- Status Line
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
@@ -107,7 +103,7 @@ return {
 		-- 	theme = "catppuccin",
 		-- end,
 	},
-{
+	{
 		"stevearc/dressing.nvim",
 		lazy = true,
 		init = function()
@@ -123,7 +119,7 @@ return {
 			end
 		end,
 	},
-{
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,

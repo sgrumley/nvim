@@ -4,7 +4,7 @@ return {
 	event = "VimEnter",
 	config = function()
 		local dashboard = require("alpha.themes.dashboard")
-		dashboard.section.header.val = require("plugins.config.dashboard.logos")["random"]
+		dashboard.section.header.val = require("plugins.dashboard.logos")["random"]
 		dashboard.section.buttons.val = {
 			dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
 			dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -60,5 +60,4 @@ return {
 			end,
 		})
 	end,
-	-- },
 }

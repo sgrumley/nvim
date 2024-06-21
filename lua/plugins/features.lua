@@ -3,7 +3,7 @@
   Description: This is for plugins to give base IDE functionality. These should be features of the editor
 ]]
 return {
-{
+	{
 		-- TODO: This would be nice as a popup rather than tree on left
 		-- unsure if to replace with telescope
 		-- DOCUMENT/CODE SYNTAX TREE
@@ -23,7 +23,7 @@ return {
 			})
 		end,
 	},
-{
+	{
 		"ThePrimeagen/harpoon",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
@@ -39,13 +39,13 @@ return {
 			require("plugins.config.features.flash")
 		end,
 	},
-{
+	{
 		"rmagatti/goto-preview",
 		config = function()
 			require("plugins.config.features.goto")
 		end,
 	},
--- TODO: set <leader>m to map each mark, set menu to leader M
+	-- TODO: set <leader>m to map each mark, set menu to leader M
 	-- https://github.com/chentoast/marks.nvim
 	{
 		"chentoast/marks.nvim",
@@ -53,7 +53,7 @@ return {
 			require("marks").setup()
 		end,
 	},
-{
+	{
 		"roobert/surround-ui.nvim",
 		dependencies = {
 			"kylechui/nvim-surround",
@@ -128,7 +128,7 @@ return {
 			telescope.load_extension("fzf")
 		end,
 	},
--- Git
+	-- Git
 	{
 		"sindrets/diffview.nvim",
 	},
@@ -140,7 +140,7 @@ return {
 			require("plugins.config.features.gitsigns")
 		end,
 	},
--- comment
+	-- comment
 	{
 		"numToStr/Comment.nvim",
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -160,7 +160,7 @@ return {
 		event = "InsertEnter",
 		opts = {},
 	},
-{
+	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
 			require("nvim-tmux-navigation").setup({})
@@ -170,7 +170,7 @@ return {
 			vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
 		end,
 	},
-		-- Detect tabstop and shiftwidth automatically
+	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
@@ -178,16 +178,16 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
-    -- project one of:
--- {
--- 		"ahmedkhalf/project.nvim",
--- 		config = function()
--- 			require("project_nvim").setup()
--- 			require("telescope").load_extension("projects")
--- 			-- require'telescope'.extensions.projects.projects{}
--- 		end,
--- 	},
-    -- {
+	-- project one of:
+	-- {
+	-- 		"ahmedkhalf/project.nvim",
+	-- 		config = function()
+	-- 			require("project_nvim").setup()
+	-- 			require("telescope").load_extension("projects")
+	-- 			-- require'telescope'.extensions.projects.projects{}
+	-- 		end,
+	-- 	},
+	-- {
 	-- 	"coffebar/neovim-project",
 
 	-- 	opts = {

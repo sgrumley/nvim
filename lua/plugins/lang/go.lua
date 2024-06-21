@@ -1,5 +1,5 @@
 return {
-{
+	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, {
@@ -89,7 +89,7 @@ return {
 			vim.list_extend(opts.ensure_installed, { "goimports", "gofumpt" })
 		end,
 	},
-    -- NOTE: this is probably not needed as gopls handles this well
+	-- NOTE: this is probably not needed as gopls handles this well
 	-- {
 	-- 	"stevearc/conform.nvim",
 	-- 	optional = true,
@@ -129,7 +129,7 @@ return {
 					experimental = {
 						test_table = true,
 					},
-					args = { "-count=1", "-timeout=15s"} -- , "| tparse -format=markdown" },
+					args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
 				},
 			},
 		},
