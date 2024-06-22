@@ -5,8 +5,18 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-
 			{ "j-hui/fidget.nvim", opts = {} },
+			{
+				"SmiteshP/nvim-navbuddy",
+				dependencies = {
+					"SmiteshP/nvim-navic",
+					"MunifTanjim/nui.nvim",
+				},
+				opts = { lsp = { auto_attach = true } },
+				keys = {
+					{ "<leader>cn", "<cmd>Navbuddy<CR>", desc = "Toggle popup outline" },
+				},
+			},
 		},
 		config = function()
 			-- If you're wondering about lsp vs treesitter, you can check out the wonderfully

@@ -4,24 +4,14 @@
 ]]
 return {
 	{
-		-- TODO: This would be nice as a popup rather than tree on left
-		-- unsure if to replace with telescope
-		-- DOCUMENT/CODE SYNTAX TREE
-		"simrat39/symbols-outline.nvim",
-		config = function()
-			require("symbols-outline").setup({
-				-- autofold_depth = 1, -- h: close, l: open, W: close all, E: open all
-				auto_close = false,
-				highlight_hovered_item = true,
-				position = "left",
-				width = 15,
-			})
-			vim.keymap.set("n", "<leader>uo", "<cmd>SymbolsOutline<CR>", {
-				noremap = true,
-				silent = true,
-				desc = "Toggle Symbol [O]utline",
-			})
-		end,
+		-- https://github.com/hedyhli/outline.nvim?tab=readme-ov-file#default-keymaps
+		"hedyhli/outline.nvim",
+		lazy = true,
+		cmd = { "Outline", "OutlineOpen" },
+		keys = {
+			{ "<leader>co", "<cmd>Outline<CR>", desc = "Toggle outline tree" },
+		},
+		opts = {},
 	},
 	{
 		"ThePrimeagen/harpoon",
@@ -50,21 +40,22 @@ return {
 	{
 		"chentoast/marks.nvim",
 		config = function()
-			require("marks").setup()
-		end,
-	},
-	{
-		"roobert/surround-ui.nvim",
-		dependencies = {
-			"kylechui/nvim-surround",
-			"folke/which-key.nvim",
-		},
-		config = function()
-			require("surround-ui").setup({
-				root_key = "S",
+			require("marks").setup({
+				mappings = {
+					toggle = "<leader>kt",
+					set = "<leader>ks",
+					set_next = "<leader>kn",
+					preview = "<leader>kp",
+					next = "<leader>k]",
+					prev = "<leader>k[",
+					delete = "<leader>kd",
+					delete_buf = "<leader>kb",
+				},
 			})
 		end,
 	},
+	-- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md#features
+	{ "echasnovski/mini.surround", version = false, opts = {} },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
