@@ -15,10 +15,9 @@ require("config.options")
 -- Plugin management
 require("lazy").setup({
 	{ import = "plugins.dashboard" },
-	{ import = "plugins.lsp.lspconfig" },
-	{ import = "plugins.lsp.formatting" },
+	{ import = "plugins.lsp" },
+	{ import = "plugins.lang" },
 	{ import = "plugins" },
-	-- { import = "plugins.lang" },
 }, {})
 
 -- require("config.go-test")
