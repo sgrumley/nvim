@@ -74,7 +74,6 @@ keymap("n", "i", function()
 	end
 end, { expr = true })
 
-
 -- TODO: move somewhere else
 nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
 nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
@@ -89,5 +88,3 @@ nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
 -- :DiffviewOpen origin/main...HEAD
 
 nmap("<leader>gl", "<cmd>LazyGit<CR>", "[G]it [L]azygit") -- open lazy git
-
-

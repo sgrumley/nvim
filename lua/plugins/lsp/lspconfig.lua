@@ -127,45 +127,80 @@ return {
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+			--
+			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			-- NOTE: I override server settings in the lang file
+			-- Do I though?
 			local servers = {
 				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`tsserver`) will work just fine
-				-- tsserver = {},
-				--
-
-				lua_ls = {
-					-- cmd = {...},
-					-- filetypes { ...},
-					-- capabilities = {},
+				gopls = {
+					gofumpt = true,
+					codelenses = {
+						gc_details = false,
+						generate = true,
+						regenerate_cgo = true,
+						run_govulncheck = true,
+						test = true,
+						tidy = true,
+						upgrade_dependency = true,
+						vendor = true,
+					},
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
+					analyses = {
+						fieldalignment = true,
+						nilness = true,
+						unusedparams = true,
+						unusedwrite = true,
+						useany = true,
+					},
+					usePlaceholders = true,
+					completeUnimported = true,
+					staticcheck = true,
+					directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+					semanticTokens = true,
+				},
+				dockerls = {},
+				docker_compose_language_service = {},
+				jsonls = {
+					-- lazy-load schemastore when needed
+					on_new_config = function(new_config)
+						new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+						vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+					end,
 					settings = {
-						-- Lua = {
-						-- 	runtime = { version = "LuaJIT" },
-						-- 	workspace = {
-						-- 		checkThirdParty = false,
-						-- 		-- Tells lua_ls where to find all the Lua files that you have loaded
-						-- 		-- for your neovim configuration.
-						-- 		library = {
-						-- 			"${3rd}/luv/library",
-						-- 			unpack(vim.api.nvim_get_runtime_file("", true)),
-						-- 		},
-						-- 		-- If lua_ls is really slow on your computer, you can try this instead:
-						-- 		-- library = { vim.env.VIMRUNTIME },
-						-- 	},
-						-- 	completion = {
-						-- 		callSnippet = "Replace",
-						-- 	},
-						-- 	-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						-- 	-- diagnostics = { disable = { 'missing-fields' } },
-						-- },
+						json = {
+							format = {
+								enable = true,
+							},
+							validate = { enable = true },
+						},
+					},
+				},
+				yamlls = {},
+				buf = {},
+				sqlls = {},
+				terraformls = {},
+				pyright = {},
+				lua_ls = {
+					settings = {
+						Lua = {
+							workspace = {
+								checkThirdParty = false,
+							},
+							completion = { callSnippet = "Replace" },
+							telemetry = { enable = false },
+							hint = {
+								enable = true,
+							},
+						},
 					},
 				},
 			}
