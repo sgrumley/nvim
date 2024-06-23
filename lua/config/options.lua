@@ -8,19 +8,15 @@ opt.smartindent = true -- Turn on smart indentation. See in the docs for more in
 -- Clipboard
 opt.clipboard = "unnamedplus" -- Use system clipboard
 opt.fixeol = false -- Turn off appending new line in the end of a file
+if vim.fn.has("wsl") == 1 then
+	vim.api.nvim_create_autocmd("TextYankPost", {
 
-if not vim.fn.has("macunix") then
-	vim.g.clipboard = {
-		copy = {
-			["+"] = "clip.exe",
-			["*"] = "clip.exe",
-		},
-		paste = {
-			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-		},
-		cache_enabled = 0,
-	}
+		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+
+		callback = function()
+			vim.fn.system("clip.exe", vim.fn.getreg('"'))
+		end,
+	})
 end
 
 -- Folding
