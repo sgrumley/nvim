@@ -1,4 +1,6 @@
 TODO:
+- fix tabbing
+
 Learn: 
 - treesitter text objects
 - testing + debuggin
@@ -8,3 +10,4 @@ Learn:
 Refactor: 
   any plugins with lots of settings should have a folder in config - this is pretty much done except for lspconfig
   - an lspconfig deep dive would be helpful for cleaning it up
+  or have a file for each plugin and no config file

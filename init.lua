@@ -14,7 +14,6 @@ require("config.options")
 
 -- Plugin management
 require("lazy").setup({
-	{ import = "plugins.dashboard.init" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.lang" },
 	{ import = "plugins" },

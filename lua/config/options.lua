@@ -19,6 +19,13 @@ if vim.fn.has("wsl") == 1 then
 	})
 end
 
+-- Disable diagnostic test while lsp_lines.nvim is enabled
+vim.diagnostic.config(
+  {
+    virtual_text = false,
+  }
+)
+
 -- Folding
 opt.foldmethod = "syntax"
 
