@@ -1,5 +1,6 @@
 TODO:
 - fix tabbing
+- check out: https://github.com/piersolenski/wtf.nvim
 
 Learn: 
 - treesitter text objects
