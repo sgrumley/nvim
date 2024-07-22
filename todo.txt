@@ -1,8 +1,5 @@
 TODO:
-- refactor keymappings to more efficient maps
-  - sort out testing / debugging -> remove overlap with diagnostics
-- only attach commands based on buffer. e.g all go commands can move into <leader>l once I attach them to go files
-- go through each plugin and stabalize (optimize/ clean). Is it needed? 
+- fix tabbing
 
 Learn: 
 - treesitter text objects
@@ -10,7 +7,7 @@ Learn:
 - fugitive git merge
 - surround
 
-
-Install: 
-- https://github.com/SalOrak/whaler.nvim
-- https://github.com/anuvyklack/windows.nvim
+Refactor: 
+  any plugins with lots of settings should have a folder in config - this is pretty much done except for lspconfig
+  - an lspconfig deep dive would be helpful for cleaning it up
+  or have a file for each plugin and no config file

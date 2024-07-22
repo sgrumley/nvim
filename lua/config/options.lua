@@ -1,9 +1,4 @@
--- Set associating between turned on plugins and filetype
-cmd([[filetype plugin on]])
-
--- Disable comments on pressing Enter
-cmd([[autocmd FileType * setlocal formatoptions-=cro]])
-
+require("config.globals")
 -- Tabs
 opt.expandtab = true -- Use spaces by default
 opt.shiftwidth = 2 -- Set amount of space characters, when we press "<" or ">"
@@ -13,27 +8,30 @@ opt.smartindent = true -- Turn on smart indentation. See in the docs for more in
 -- Clipboard
 opt.clipboard = "unnamedplus" -- Use system clipboard
 opt.fixeol = false -- Turn off appending new line in the end of a file
+if vim.fn.has("wsl") == 1 then
+	vim.api.nvim_create_autocmd("TextYankPost", {
 
-if not vim.fn.has("macunix") then
-	vim.g.clipboard = {
-		copy = {
-			["+"] = "clip.exe",
-			["*"] = "clip.exe",
-		},
-		paste = {
-			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-		},
-		cache_enabled = 0,
-	}
+		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+
+		callback = function()
+			vim.fn.system("clip.exe", vim.fn.getreg('"'))
+		end,
+	})
 end
+
+-- Disable diagnostic test while lsp_lines.nvim is enabled
+vim.diagnostic.config(
+  {
+    virtual_text = false,
+  }
+)
 
 -- Folding
 opt.foldmethod = "syntax"
 
 -- Line Number
 opt.number = true
-opt.relativenumber = false
+opt.relativenumber = true
 
 -- Search
 opt.ignorecase = true -- Ignore case if all characters in lower case
