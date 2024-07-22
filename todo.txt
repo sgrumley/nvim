@@ -1,6 +1,8 @@
 TODO:
 - fix tabbing
 - check out: https://github.com/piersolenski/wtf.nvim
+- upgrade markdown
+  - https://github.com/MeanderingProgrammer/markdown.nvim
 
 Learn: 
 - treesitter text objects
