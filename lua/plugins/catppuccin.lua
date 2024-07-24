@@ -1,15 +1,14 @@
 return {
 	{
 		"catppuccin/nvim",
-		priority = 1000,
 		name = "catppuccin",
 		enabled = true,
+		priority = 1000,
 		config = function()
 			local catppuccin = require("catppuccin")
-
 			catppuccin.setup({
 				flavour = "mocha",
-				term_color = false,
+				term_color = true,
 				integrations = {
 					cmp = true,
 					gitsigns = true,
@@ -22,12 +21,13 @@ return {
 					telescope = {
 						enabled = true,
 					},
-					illuminate = {
-						enabled = true,
-						lsp = false,
-					},
+					-- illuminate = {
+					-- 	enabled = true,
+					-- 	lsp = false,
+					-- },
 				},
 			})
+
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
