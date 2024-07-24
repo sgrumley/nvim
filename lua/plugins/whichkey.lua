@@ -17,6 +17,7 @@ return {
 				{ "<leader>t", group = "󰙨 [T]esting" },
 				{ "<leader>u", group = "󰹑 [U]I" },
 				{ "<leader>w", group = " [W]indow Management" },
+				{ "<leader>z", group = " Fold[Z]" },
 			})
 		end,
 	},

@@ -11,6 +11,13 @@ return {
 		end,
 	},
 	{
+		"williamboman/mason.nvim",
+		opts = function(_, opts)
+			opts.ensure_installed = opts.ensure_installed or {}
+			vim.list_extend(opts.ensure_installed, { "goimports", "gofumpt" })
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
@@ -59,6 +66,15 @@ return {
 			},
 			setup = {
 				gopls = function(_, opts)
+					-- attempt to set custom folds per language
+					vim.treesitter.set_query(
+						"go",
+						"folds",
+						[[
+						(function_definition (block) @fold)
+						(class_definition (block) @fold)
+					]]
+					)
 					-- workaround for gopls not supporting semanticTokensProvider
 					-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
 					require("lazyvim.util").lsp.on_attach(function(client, _)
@@ -81,57 +97,40 @@ return {
 			},
 		},
 	},
-	-- Ensure Go tools are installed
-	{
-		"williamboman/mason.nvim",
-		opts = function(_, opts)
-			opts.ensure_installed = opts.ensure_installed or {}
-			vim.list_extend(opts.ensure_installed, { "goimports", "gofumpt" })
-		end,
-	},
-	-- NOTE: this is probably not needed as gopls handles this well
 	-- {
-	-- 	"stevearc/conform.nvim",
+	-- 	"mfussenegger/nvim-dap",
 	-- 	optional = true,
-	-- 	opts = {
-	-- 		formatters_by_ft = {
-	-- 			go = { "goimports", "gofumpt" },
+	-- 	dependencies = {
+	-- 		{
+	-- 			"williamboman/mason.nvim",
+	-- 			opts = function(_, opts)
+	-- 				opts.ensure_installed = opts.ensure_installed or {}
+	-- 				vim.list_extend(opts.ensure_installed, { "delve" })
+	-- 			end,
+	-- 		},
+	-- 		{
+	-- 			"leoluz/nvim-dap-go",
+	-- 			config = true,
 	-- 		},
 	-- 	},
 	-- },
-	{
-		"mfussenegger/nvim-dap",
-		optional = true,
-		dependencies = {
-			{
-				"williamboman/mason.nvim",
-				opts = function(_, opts)
-					opts.ensure_installed = opts.ensure_installed or {}
-					vim.list_extend(opts.ensure_installed, { "delve" })
-				end,
-			},
-			{
-				"leoluz/nvim-dap-go",
-				config = true,
-			},
-		},
-	},
-	{
-		"nvim-neotest/neotest",
-		optional = true,
-		dependencies = {
-			"nvim-neotest/neotest-go",
-		},
-		opts = {
-			adapters = {
-				["neotest-go"] = {
-					-- Here we can set options for neotest-go, e.g.
-					experimental = {
-						test_table = true,
-					},
-					args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
-				},
-			},
-		},
-	},
+	-- NOTE: a rough experience for testing, leaving here as a reminder to check if it's better
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	optional = true,
+	-- 	dependencies = {
+	-- 		"nvim-neotest/neotest-go",
+	-- 	},
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			["neotest-go"] = {
+	-- 				-- Here we can set options for neotest-go, e.g.
+	-- 				experimental = {
+	-- 					test_table = true,
+	-- 				},
+	-- 				args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 }

@@ -1,9 +1,9 @@
 return {
 	{
 		"catppuccin/nvim",
+		priority = 1000,
 		name = "catppuccin",
 		enabled = true,
-		priority = 1000,
 		config = function()
 			local catppuccin = require("catppuccin")
 

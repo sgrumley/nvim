@@ -18,12 +18,4 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	-- TODO: set formatting options
-	-- 	"stevearc/conform.nvim",
-	-- },
-	-- {
-	-- 	-- TODO: set lint options
-	-- 	"mfussenegger/nvim-lint",
-	-- },
 }

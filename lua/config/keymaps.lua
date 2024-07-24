@@ -30,6 +30,11 @@ nmap("<leader>wh", "<cmd>vertical resize -50<CR>", "Window Smaller")
 nmap("<leader>wk", "<cmd>resize +8<CR>", "Horizontal Window Bigger")
 nmap("<leader>wj", "<cmd>resize -8<CR>", "Horizontal Window Smaller")
 
+-- Folds
+nmap("<leader>zo", "zR", "Open All")
+nmap("<leader>zc", "zM", "Close All")
+nmap("<leader>za", "za", "Toggle At Cursor")
+
 -- QOL
 -- Remap for dealing with word wrap
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })

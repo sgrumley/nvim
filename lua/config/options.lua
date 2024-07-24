@@ -20,14 +20,16 @@ if vim.fn.has("wsl") == 1 then
 end
 
 -- Disable diagnostic test while lsp_lines.nvim is enabled
-vim.diagnostic.config(
-  {
-    virtual_text = false,
-  }
-)
+vim.diagnostic.config({
+	virtual_text = false,
+})
 
 -- Folding
-opt.foldmethod = "syntax"
+-- refer to treesitterlua config for foldmethod
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 5
+vim.opt.foldlevelstart = 3
+vim.opt.foldnestmax = 4
 
 -- Line Number
 opt.number = true
@@ -48,23 +50,22 @@ opt.splitright = true -- Put new vertical splits to right
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
 
+-- Whitespace
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- To be determined
+vim.opt.inccommand = "split"
+
 -- Quality Of Life
+vim.opt.cursorline = true -- visual show of cursor line
+vim.opt.scrolloff = 15 -- start scrolling before end of page
+vim.g.have_nerd_font = true
 vim.o.termguicolors = true
 vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better completion experience
 vim.o.undofile = true -- Save undo history
 vim.o.breakindent = true -- Enable break indent
 opt.signcolumn = "yes" -- reserves room on the left side of the buffer for things such as error markers or break points
-
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
-})
 
 -- Default Plugins {{{
 local disabled_built_ins = {

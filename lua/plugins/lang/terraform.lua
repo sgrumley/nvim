@@ -11,6 +11,12 @@ return {
 		end,
 	},
 	{
+		"williamboman/mason.nvim",
+		opts = function(_, opts)
+			vim.list_extend(opts.ensure_installed, { "terraformls" })
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
@@ -18,12 +24,4 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	-- TODO: set formatting options
-	-- 	"stevearc/conform.nvim",
-	-- },
-	-- {
-	-- 	-- TODO: set lint options
-	-- 	"mfussenegger/nvim-lint",
-	-- },
 }

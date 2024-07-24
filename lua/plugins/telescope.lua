@@ -5,8 +5,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-ui-select.nvim" },
-
-			-- Useful for getting pretty icons, but requires a Nerd Font.
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		cmd = "Telescope",
@@ -33,33 +31,39 @@ return {
 			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
 			{ "<leader>fP", "<cmd>Telescope projects<CR>", desc = "[F]ind [P]rojects" },
 		},
-		opts = {
-			defaults = {
-				file_ignore_patterns = {
-					"vendor",
-				},
-				mappings = {
-					i = {
-						["<C-j>"] = function(...)
-							require("telescope.actions").move_selection_next(...)
-						end,
-						["<C-k>"] = function(...)
-							require("telescope.actions").move_selection_previous(...)
-						end,
-						["<C-n>"] = function(...)
-							require("telescope.actions").cycle_history_next(...)
-						end,
-						["<C-p>"] = function(...)
-							require("telescope.actions").cycle_history_prev(...)
-						end,
+		config = function()
+			require("telescope").setup({
+				defaults = {
+					file_ignore_patterns = {
+						"vendor",
+					},
+					mappings = {
+						i = {
+							["<C-j>"] = function(...)
+								require("telescope.actions").move_selection_next(...)
+							end,
+							["<C-k>"] = function(...)
+								require("telescope.actions").move_selection_previous(...)
+							end,
+							["<C-n>"] = function(...)
+								require("telescope.actions").cycle_history_next(...)
+							end,
+							["<C-p>"] = function(...)
+								require("telescope.actions").cycle_history_prev(...)
+							end,
+						},
 					},
 				},
-			},
-		},
-		config = function(_, opts)
-			local telescope = require("telescope")
-			telescope.setup(opts)
-			telescope.load_extension("fzf")
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown(),
+					},
+				},
+			})
+
+			-- Enable Telescope extensions if they are installed
+			pcall(require("telescope").load_extension, "fzf")
+			pcall(require("telescope").load_extension, "ui-select")
 		end,
 	},
 }
