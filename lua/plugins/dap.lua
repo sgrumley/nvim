@@ -1,9 +1,13 @@
 return {
 	{
-		-- alternative simple install
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"leoluz/nvim-dap-go",
+			"nvim-neotest/nvim-nio",
+			{
+				"theHamsta/nvim-dap-virtual-text",
+				opts = {},
+			},
 			{
 				"rcarriga/nvim-dap-ui",
 				opts = {},
@@ -15,12 +19,28 @@ return {
 						end,
 						desc = "Dap UI",
 					},
+					{
+						"<leader>de",
+						function()
+							require("dapui").eval()
+						end,
+						desc = "Eval",
+						mode = { "n", "v" },
+					},
 				},
-			},
-			"nvim-neotest/nvim-nio",
-			{
-				"theHamsta/nvim-dap-virtual-text",
-				opts = {},
+
+				{
+					"jay-babu/mason-nvim-dap.nvim",
+					dependencies = "mason.nvim",
+					cmd = { "DapInstall", "DapUninstall" },
+					opts = {
+						automatic_installation = true,
+						handlers = {},
+						ensure_installed = {
+							"delve",
+						},
+					},
+				},
 			},
 		},
 		config = function()
@@ -45,6 +65,18 @@ return {
 				ui.close()
 			end
 
+			-- debug with vscode format launch.json file
+			-- NOTE: this requires strict json and cannot have trailing commas or comments
+			debug_with_launch = function()
+				if vim.fn.filereadable(".vscode/launch.json") then
+					-- Path to the `launch.json` file. Defaults to
+					-- `.vscode/launch.json` in the current working directory.
+					require("dap.ext.vscode").load_launchjs()
+				end
+				require("dap").continue()
+			end
+
+			vim.keymap.set("n", "<Leader>df", debug_with_launch)
 			vim.keymap.set("n", "<Leader>db", ":DapToggleBreakpoint<CR>")
 			vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 			vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
@@ -56,5 +88,16 @@ return {
 		end,
 	},
 }
+
+-- possible key maps
+--   keys = {
+--     { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+--     { "<leader>da", function() require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
+--     { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
+--     { "<leader>dg", function() require("dap").goto_() end, desc = "Go to line (no execute)" },
+--     { "<leader>dj", function() require("dap").down() end, desc = "Down" },
+--     { "<leader>dk", function() require("dap").up() end, desc = "Up" },
+--     { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
+--     { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
 
 -- vim: ts=2 sts=2 sw=2 et
