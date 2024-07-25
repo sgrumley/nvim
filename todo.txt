@@ -1,10 +1,12 @@
 TODO:
+- project plugin
 - fix tabbing
 - check out: https://github.com/piersolenski/wtf.nvim
 - upgrade markdown
   - https://github.com/MeanderingProgrammer/markdown.nvim
 
 Learn: 
+- oil over neotree
 - treesitter text objects
 - testing + debuggin
 - fugitive git merge

@@ -9,6 +9,8 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			sync_install = false,
+			-- NOTE: any language with a bit more customization will be added via
+			-- lua/plugins/lang
 			ensure_installed = {
 				"html",
 				"http",
@@ -18,6 +20,19 @@ return {
 				"regex",
 				"vim",
 				"vimdoc",
+				"lua",
+				"luadoc",
+				"luap",
+				"dockerfile",
+				"json",
+				"json5",
+				"jsonc",
+				"proto",
+				"sql",
+				"terraform",
+				"hcl",
+				"yaml",
+				"python",
 			},
 			autoinstall = true,
 			highlight = {
