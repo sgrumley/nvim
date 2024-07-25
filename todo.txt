@@ -4,11 +4,24 @@ TODO:
 - check out: https://github.com/piersolenski/wtf.nvim
 - upgrade markdown
   - https://github.com/MeanderingProgrammer/markdown.nvim
-
+- setup markdown to look a bit nicer
+  - normal mode should render
+  - insert mode raw markdown 
+- Work towards a better folds solution
+  - using a treesitter query per language or per file type
+  - would be nice to have different fold levels on go tests vs go code
+- Update todo to catch more useful names, use catpuccin themed colors
+  - revisit possible listing options for project 
+- Have Icons available in config
+- Move which key names to align with update providing icons
+- Group smaller plugins to files e.g indent, git stuff...
+- telescope preview scrolling
+- add telescope dap
+- remove trouble or make better use of it
 Learn: 
 - oil over neotree
-- treesitter text objects
-- testing + debuggin
+- treesitter text objects (move)
+- testing
 - fugitive git merge
 - surround
 
