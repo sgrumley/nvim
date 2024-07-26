@@ -63,6 +63,7 @@ keymap("v", "d", '"_d')
 keymap("n", "c", '"_c')
 keymap("v", "c", '"_c')
 keymap("n", "x", '"_x')
+
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dp')
 
@@ -78,18 +79,3 @@ keymap("n", "i", function()
 		return "i"
 	end
 end, { expr = true })
-
--- TODO: move somewhere else
-nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
-nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
-nmap("<leader>gml", "<cmd>diffget //2<cr>", "Git Merge Left")
-nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
--- :DiffviewOpen
--- :DiffviewOpen HEAD~2
--- :DiffviewOpen HEAD~4..HEAD~2
--- :DiffviewOpen d4a7b0d
--- :DiffviewOpen d4a7b0d^!
--- :DiffviewOpen d4a7b0d..519b30e
--- :DiffviewOpen origin/main...HEAD
-
-nmap("<leader>gl", "<cmd>LazyGit<CR>", "[G]it [L]azygit") -- open lazy git

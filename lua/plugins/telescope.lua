@@ -5,6 +5,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{ "nvim-telescope/telescope-dap.nvim" },
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		cmd = "Telescope",
@@ -30,6 +31,9 @@ return {
 			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
 			{ "<leader>fP", "<cmd>Telescope projects<CR>", desc = "[F]ind [P]rojects" },
+			{ "<leader>fDs", "<cmd>Telescope dap_configurations<CR>", desc = "[F]ind [D]ap [S]ettings" },
+			{ "<leader>fDc", "<cmd>Telescope dap_commands<CR>", desc = "[F]ind [D]ap [C]ommands" },
+			{ "<leader>fDb", "<cmd>Telescope dap_list_breakpoints<CR>", desc = "[F]ind [D]ap [B]reakpoints" },
 		},
 		config = function()
 			require("telescope").setup({
@@ -39,6 +43,7 @@ return {
 					},
 					mappings = {
 						i = {
+							-- scroll docs is  <C-u> and <C-d>
 							["<C-j>"] = function(...)
 								require("telescope.actions").move_selection_next(...)
 							end,
@@ -62,6 +67,7 @@ return {
 			})
 
 			-- Enable Telescope extensions if they are installed
+			pcall(require("telescope").load_extension("dap"))
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
 		end,
