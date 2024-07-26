@@ -4,6 +4,19 @@ return {
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
 			require("lsp_lines").setup()
+			toggle_lines = function()
+				require("lsp_lines").toggle()
+				if vim.inspect(vim.diagnostic.config().virtual_text) == true then
+					vim.diagnostic.config({
+						virtual_text = false,
+					})
+				else
+					vim.diagnostic.config({
+						virtual_text = true,
+					})
+				end
+			end
+			nmap("<leader>cl", toggle_lines, "[C]ode [L]ines [T]oggle")
 		end,
 	},
 	-- {

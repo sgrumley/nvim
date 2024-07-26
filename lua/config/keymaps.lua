@@ -5,7 +5,7 @@ g.mapleader = " "
 
 -- Neovim
 nmap("<leader>q", "<cmd>q!<CR>", "Force Quit")
-nmap("<leader>cl", "<cmd>noh<CR>", "Clear Search Highlight")
+nmap("<leader>h", "<cmd>noh<CR>", "Clear Search Highlight")
 
 -- Plugin Menus
 nmap("<leader>ml", "<cmd>Lazy home<CR>", "[M]enu [L]azy")
