@@ -2,6 +2,7 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
+			"rcarriga/nvim-dap-ui",
 			"leoluz/nvim-dap-go",
 			"nvim-neotest/nvim-nio",
 			{
@@ -9,48 +10,30 @@ return {
 				opts = {},
 			},
 			{
-				"rcarriga/nvim-dap-ui",
-				opts = {},
-				keys = {
-					{
-						"<leader>du",
-						function()
-							require("dapui").toggle({})
-						end,
-						desc = "Dap UI",
-					},
-					{
-						"<leader>de",
-						function()
-							require("dapui").eval()
-						end,
-						desc = "Eval",
-						mode = { "n", "v" },
-					},
-				},
-
-				{
-					"jay-babu/mason-nvim-dap.nvim",
-					dependencies = "mason.nvim",
-					cmd = { "DapInstall", "DapUninstall" },
-					opts = {
-						automatic_installation = true,
-						handlers = {},
-						ensure_installed = {
-							"delve",
-						},
+				"jay-babu/mason-nvim-dap.nvim",
+				dependencies = "mason.nvim",
+				cmd = { "DapInstall", "DapUninstall" },
+				opts = {
+					automatic_installation = true,
+					handlers = {},
+					ensure_installed = {
+						"delve",
 					},
 				},
 			},
 		},
 		config = function()
 			local dap_ok, dap = pcall(require, "dap")
+			if not dap_ok then
+				require("notify")("dap not installed", "warning")
+			end
 			local dap_ui_ok, ui = pcall(require, "dapui")
-			if not (dap_ok and dap_ui_ok) then
+			if not dap_ui_ok then
 				require("notify")("dap-ui not installed", "warning")
 			end
 
 			require("dap-go").setup()
+			ui.setup()
 
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()
@@ -85,6 +68,18 @@ return {
 			vim.keymap.set("n", "<Leader>dO", ":DapStepOut<CR>")
 			vim.keymap.set("n", "<Leader>dt", ":lua require('dap-go').debug_test()<CR>")
 			vim.keymap.set("n", "<Leader>dr", ":lua require('dap-go').debug_last_test()<CR>")
+
+			-- DB UI keymaps
+			uitoggle = function()
+				require("dapui").toggle({})
+			end
+
+			eval = function()
+				require("dapui").eval()
+			end
+
+			vim.keymap.set("n", "<leader>du", uitoggle)
+			vim.keymap.set("n", "<leader>de", eval)
 		end,
 	},
 }

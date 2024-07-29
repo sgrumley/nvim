@@ -1,9 +1,11 @@
 return {
 	{ "tpope/vim-sleuth" },
+	-- new lines for lsp diagnostics
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
 			require("lsp_lines").setup()
+
 			toggle_lines = function()
 				require("lsp_lines").toggle()
 				if vim.inspect(vim.diagnostic.config().virtual_text) == true then
@@ -16,6 +18,7 @@ return {
 					})
 				end
 			end
+
 			nmap("<leader>cl", toggle_lines, "[C]ode [L]ines [T]oggle")
 		end,
 	},
@@ -24,6 +27,7 @@ return {
 	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- 	opts = {},
 	-- },
+	-- scrol bar on right side, this could be enhanced
 	{
 		"petertriho/nvim-scrollbar",
 		opts = {},
@@ -44,6 +48,7 @@ return {
 			end
 		end,
 	},
+	-- commenting lines
 	{
 		"numToStr/Comment.nvim",
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -56,6 +61,7 @@ return {
 			require("Comment").setup(opts)
 		end,
 	},
+	-- auto add closing brackets
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -68,7 +74,7 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
-	-- testing out
+	-- smooth scrolling
 	{
 		"karb94/neoscroll.nvim",
 		opts = {},
