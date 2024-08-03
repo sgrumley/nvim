@@ -4,6 +4,8 @@ TODO:
 - check out: https://github.com/piersolenski/wtf.nvim
 - Have Icons available in config for consistency
 - Move which key names to align with update providing icons
+- github.com/ThePrimeagen/refactoring.nvim
+- consider https://github.com/creativecreature/pulse
 
 - setup markdown to look a bit nicer
   - https://github.com/MeanderingProgrammer/markdown.nvim

@@ -37,12 +37,12 @@ return {
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
+				svelte = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" }, -- yamlfix, yamlfmt
 				markdown = { "prettier" },
-				graphql = { "prettier" },
 				lua = { "stylua" },
 				-- python = { "isort", "black" },
 				proto = { "buf" },
