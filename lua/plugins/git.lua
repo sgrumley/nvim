@@ -76,10 +76,17 @@ return {
 
 			-- keymaps
 			nmap("<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", "[G]it Preview Chunk")
-			nmap("<leader>gdt", "<cmd>Gitsigns diffthis<CR>", "[G]it [D]iff [T]his")
+
 			nmap("<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", "[G]it [S]tage Chunk")
 			nmap("<leader>gu", "<cmd>Gitsigns reset_hunk<CR>", "[G]it [U]ndo Chunk")
 			nmap("<leader>gs", "<cmd>Telescope git_status<CR>", "[G]it [S]tatus")
+
+			-- diff keymaps
+			-- TODO: move these to diffview
+			nmap("<leader>gdm", "<cmd>DiffviewOpen master<CR>", "[G]it [D]iff [M]aster")
+			nmap("<leader>gdb", "<cmd>DiffviewOpen ", "[G]it [D]iff [B]ranch")
+			-- nmap("<leader>gdt", "<cmd>Gitsigns diffthis<CR>", "[G]it [D]iff [T]his")
+
 			-- merge keymaps
 			nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
 			nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
@@ -98,9 +105,9 @@ return {
 			-- nmap("<leader>gca", "<cmd>Telescope git_commits<CR>", "[G]it [C]ommits [A]ll")
 			-- nmap("<leader>gb", "<cmd>Telescope git_branches<CR>", "[G]it [B]ranches")
 
-			nmap("<leader>gdd", function()
-				vim.cmd("Gitsigns diffthis HEAD")
-			end, "[G]it [Diff] [H]ead")
+			-- nmap("<leader>gdd", function()
+			-- 	vim.cmd("Gitsigns diffthis HEAD")
+			-- end, "[G]it [Diff] [H]ead")
 
 			nmap("<leader>gbc", function()
 				require("gitsigns").blame_line({ full = true })
