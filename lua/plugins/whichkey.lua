@@ -4,14 +4,13 @@ return {
 		config = function()
 			local wk = require("which-key")
 			wk.add({
-				{ "<leader>a", group = " H[a]rpoon" },
+				{ "<leader>a", group = "󱡁 [A]rrow" },
 				{ "<leader>c", group = "󰘦 [C]ode" },
 				{ "<leader>d", group = " [D]ebug" },
 				{ "<leader>f", group = "󰥨 [F]ind File" },
 				{ "<leader>g", group = " [G]it" },
-				{ "<leader>k", group = "󰄸 Mar[k]s" },
 				{ "<leader>l", group = " [L]anguage" },
-				{ "<leader>m", group = " [M]enu" },
+				{ "<leader>m", group = " [M]enu" },
 				{ "<leader>n", group = "󰛏 [N]otification" },
 				{ "<leader>s", group = " [S]earch" },
 				{ "<leader>t", group = "󰙨 [T]esting" },
