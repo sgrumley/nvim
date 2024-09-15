@@ -5,18 +5,15 @@ return {
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
 			require("lsp_lines").setup()
+			-- turn off on startup
+			require("lsp_lines").toggle()
 
 			toggle_lines = function()
 				require("lsp_lines").toggle()
-				if vim.inspect(vim.diagnostic.config().virtual_text) == true then
-					vim.diagnostic.config({
-						virtual_text = false,
-					})
-				else
-					vim.diagnostic.config({
-						virtual_text = true,
-					})
-				end
+				local current_virtual_text = vim.diagnostic.config().virtual_text
+				vim.diagnostic.config({
+					virtual_text = not current_virtual_text, -- toggle virtual_text
+				})
 			end
 
 			nmap("<leader>cl", toggle_lines, "[C]ode [L]ines [T]oggle")
@@ -78,6 +75,16 @@ return {
 	{
 		"karb94/neoscroll.nvim",
 		opts = {},
+	},
+	{
+		"alexghergh/nvim-tmux-navigation",
+		config = function()
+			require("nvim-tmux-navigation").setup({})
+			vim.keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", {})
+			vim.keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", {})
+			vim.keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", {})
+			vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
+		end,
 	},
 }
 

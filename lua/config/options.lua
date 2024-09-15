@@ -21,7 +21,7 @@ end
 
 -- Disable diagnostic test while lsp_lines.nvim is enabled
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = true,
 })
 
 -- Folding

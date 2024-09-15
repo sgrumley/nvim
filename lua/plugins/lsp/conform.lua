@@ -14,11 +14,11 @@ return {
 			},
 		},
 		opts = {
-			notify_on_error = false,
+			notify_on_error = true,
 			format_on_save = function(bufnr)
 				local disable_filetypes = {
-					-- dockerfile = true,
-					-- sql = true,
+					dockerfile = true,
+					sql = true,
 					yaml = true,
 					json = true,
 					proto = true,
