@@ -48,7 +48,7 @@ return {
 				luasnip = 1,
 			}
 
-			cmp.setup({
+			custom_options = {
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
@@ -87,7 +87,10 @@ return {
 						winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
 					},
 				},
-			})
+			}
+
+			nv_options = vim.tbl_deep_extend("force", custom_options, require "nvchad.cmp")
+			cmp.setup(nv_options)
 		end,
 	},
 }

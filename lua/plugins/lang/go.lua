@@ -93,23 +93,18 @@ return {
 			},
 		},
 	},
-	-- NOTE: a rough experience for testing, leaving here as a reminder to check if it's better
-	-- {
-	-- 	"nvim-neotest/neotest",
-	-- 	optional = true,
-	-- 	dependencies = {
-	-- 		"nvim-neotest/neotest-go",
-	-- 	},
-	-- 	opts = {
-	-- 		adapters = {
-	-- 			["neotest-go"] = {
-	-- 				-- Here we can set options for neotest-go, e.g.
-	-- 				experimental = {
-	-- 					test_table = true,
-	-- 				},
-	-- 				args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
+{
+  "ray-x/go.nvim",
+  dependencies = {  -- optional packages
+    "ray-x/guihua.lua",
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
+  },
+  config = function()
+    require("go").setup()
+  end,
+  event = {"CmdlineEnter"},
+  ft = {"go", 'gomod'},
+  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+},
 }

@@ -1,6 +1,6 @@
 -- windows to close
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("close_with_q"),
+	group = "close_with_q",
 	pattern = {
 		"OverseerForm",
 		"OverseerList",
