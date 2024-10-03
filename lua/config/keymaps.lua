@@ -3,6 +3,12 @@ require("config.globals")
 
 g.mapleader = " "
 
+-- Weird paste fix (should be able to remove)
+vim.api.nvim_set_keymap("n", "<leader>M", "mmHmt:%s/\\r//ge<CR>'tzt'm", { noremap = true, silent = true })
+
+-- after go mod tidy you need to restart the LSP
+nmap("<leader>R", "<cmd>LspRestart<CR>", "Restart LSP")
+
 -- Neovim
 nmap("<leader>q", "<cmd>q!<CR>", "Force Quit")
 nmap("<leader>h", "<cmd>noh<CR>", "Clear Search Highlight")

@@ -8,16 +8,16 @@ opt.smartindent = true -- Turn on smart indentation. See in the docs for more in
 -- Clipboard
 opt.clipboard = "unnamedplus" -- Use system clipboard
 opt.fixeol = false -- Turn off appending new line in the end of a file
-if vim.fn.has("wsl") == 1 then
-	vim.api.nvim_create_autocmd("TextYankPost", {
+-- if vim.fn.has("wsl") == 1 then
+-- 	vim.api.nvim_create_autocmd("TextYankPost", {
 
-		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+-- 		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
 
-		callback = function()
-			vim.fn.system("clip.exe", vim.fn.getreg('"'))
-		end,
-	})
-end
+-- 		callback = function()
+-- 			vim.fn.system("clip.exe", vim.fn.getreg('"'))
+-- 		end,
+-- 	})
+-- end
 
 -- Disable diagnostic test while lsp_lines.nvim is enabled
 vim.diagnostic.config({
