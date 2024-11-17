@@ -7,6 +7,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
 			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
@@ -35,11 +36,30 @@ return {
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
 
+			-- Setup for `:` command-line
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" }, -- Path completion
+				}, {
+					{ name = "cmdline" }, -- Command-line completion
+				}),
+			})
+
+			-- Setup for `/` (search in buffer)
+			cmp.setup.cmdline("/", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" }, -- Buffer completion for searching
+				},
+			})
+
 			local source_names = {
 				nvim_lsp = "(LSP)",
 				luasnip = "(Snippet)",
 				buffer = "(Buffer)",
 				path = "(Path)",
+				cmdline = "(cmd)",
 			}
 			local duplicates = {
 				buffer = 1,
@@ -89,7 +109,7 @@ return {
 				},
 			}
 
-			nv_options = vim.tbl_deep_extend("force", custom_options, require "nvchad.cmp")
+			nv_options = vim.tbl_deep_extend("force", custom_options, require("nvchad.cmp"))
 			cmp.setup(nv_options)
 		end,
 	},
