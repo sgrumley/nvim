@@ -17,18 +17,6 @@ return {
 				},
 			},
 			{ "Bilal2453/luvit-meta", lazy = true },
-			-- NOTE: this doesn't work on mac
-			-- {
-			-- 	"SmiteshP/nvim-navbuddy",
-			-- 	dependencies = {
-			-- 		"SmiteshP/nvim-navic",
-			-- 		"MunifTanjim/nui.nvim",
-			-- 	},
-			-- 	opts = { lsp = { auto_attach = true } },
-			-- 	keys = {
-			-- 		{ "<leader>cn", "<cmd>Navbuddy<CR>", desc = "Toggle popup outline" },
-			-- 	},
-			-- },
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -124,14 +112,17 @@ return {
 			-- lua/plugins/lang
 			local servers = {
 				gopls = {},
+				templ = {},
 				lua_ls = {},
 				dockerls = {},
-				docker_compose_language_service = {},
+				docker_compose_language_service = {
+					filetypes = { "yaml.docker-compose", "compose.yaml" },
+				},
 				marksman = {},
-				buf = {},
+				buf_ls = {},
 				sqlls = {},
 				prettier = {},
-				-- yamlls = {},
+				yamlls = {},
 				terraformls = {},
 				jsonls = {
 					settings = {
@@ -151,7 +142,6 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format lua code
-				-- "yamlls",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -162,6 +152,11 @@ return {
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
+				},
+			})
+			vim.filetype.add({
+				extension = {
+					templ = "templ",
 				},
 			})
 		end,

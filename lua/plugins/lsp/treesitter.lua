@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
+			"vrischmann/tree-sitter-templ",
 			"nvim-treesitter/nvim-treesitter-context",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
@@ -15,6 +16,7 @@ return {
 				"html",
 				"http",
 				"org",
+				"templ",
 				"markdown",
 				"query",
 				"regex",

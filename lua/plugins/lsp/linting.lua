@@ -9,9 +9,10 @@ return {
 
 		lint.linters_by_ft = {
 			proto = { "buf_lint" },
-			yaml = { "yamllint" },
+			-- yaml = { "yamllint" },
 			terraform = { "tflint" },
-			json = { "biomejs" },
+			json = { "prettier" },
+			go = { "golangci_lint_ls" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

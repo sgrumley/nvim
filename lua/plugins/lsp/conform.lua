@@ -15,35 +15,37 @@ return {
 		},
 		opts = {
 			notify_on_error = true,
-			format_on_save = false,
-			-- format_on_save = function(bufnr)
-			-- 	local disable_filetypes = {
-			-- 		dockerfile = true,
-			-- 		sql = true,
-			-- 		yaml = true,
-			-- 		json = true,
-			-- 		proto = true,
-			-- 		md = true,
-			-- 	}
-			-- 	return {
-			-- 		timeout_ms = 200,
-			-- 		lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-			-- 	}
-			-- end,
+			-- format_on_save = true,
+			format_on_save = function(bufnr)
+				local disable_filetypes = {
+					dockerfile = true,
+					sql = true,
+					yaml = true,
+					json = true,
+					proto = true,
+					md = true,
+				}
+				return {
+					timeout_ms = 200,
+					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+				}
+			end,
 			formatters_by_ft = {
 				go = { "gofumpt", "goimports-reviser" }, -- golines
+				templ = { "templ" },
 				sql = { "sql_formatter" }, -- sqlfluff
-				javascript = { "biome" },
-				typescript = { "biome" },
-				javascriptreact = { "biome" },
-				typescriptreact = { "biome" },
-				svelte = { "biome" },
-				css = { "biome" },
-				html = { "biome" },
-				json = { "biome" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
+				svelte = { "prettier" },
+				css = { "prettier" },
+				html = { "prettier" },
+				json = { "prettier" },
 				yaml = { "yamlfmt" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
+
 				terraform = { "terraform_fmt" },
 				proto = { "buf" },
 			},

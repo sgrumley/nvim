@@ -3,6 +3,18 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			{
+				"princejoogie/dir-telescope.nvim",
+				config = function()
+					require("dir-telescope").setup({
+						-- these are the default options set
+						hidden = true,
+						no_ignore = false,
+						show_preview = true,
+						follow_symlinks = false,
+					})
+				end,
+			},
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
@@ -30,11 +42,15 @@ return {
 			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
 			{ "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
 			{ "<leader>fP", "<cmd>Telescope projects<CR>", desc = "[F]ind [P]rojects" },
+			{ "<leader>fs", "<cmd>Telescope dir live_grep<CR>", desc = "[F]ind [S]cope grep" },
 		},
 		config = function()
 			require("telescope").setup({
 				defaults = {
 					file_ignore_patterns = {
+						".git/",
+						"go.sum",
+						"node_modules/",
 						"vendor",
 					},
 					mappings = {
@@ -63,6 +79,8 @@ return {
 			})
 
 			-- Enable Telescope extensions if they are installed
+			pcall(require("telescope").load_extension, "dir")
+			-- vim.keymap.set("n", "<leader>fs", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
 		end,
