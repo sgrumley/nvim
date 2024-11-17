@@ -1,10 +1,5 @@
 return {
 	{ "tpope/vim-sleuth" },
-	-- new lines for lsp diagnostics
-	{
-		"petertriho/nvim-scrollbar",
-		opts = {},
-	},
 	-- commenting lines
 	{
 		"numToStr/Comment.nvim",
@@ -45,5 +40,19 @@ return {
 			vim.keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", {})
 			vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
 		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			presets = {
+				lsp_doc_border = true,
+			},
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 	},
 }

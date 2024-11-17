@@ -119,7 +119,9 @@ return {
 					filetypes = { "yaml.docker-compose", "compose.yaml" },
 				},
 				marksman = {},
-				buf_ls = {},
+				-- buf_language_server = {}, // TODO:
+				-- buf_ls = {},
+				buf = {},
 				sqlls = {},
 				prettier = {},
 				yamlls = {},

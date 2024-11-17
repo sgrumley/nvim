@@ -5,13 +5,20 @@ return {
 		event = "VeryLazy",
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviwFocusFiles" },
 	},
-	{
-		"dlvhdr/gh-blame.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
-		keys = {
-			{ "<leader>gbb", "<cmd>GhBlameCurrentLine<cr>", desc = "[G]itHub [B]lame [B]ranch" },
-		},
-	},
+	-- NOTE: not sure about permissions for this sort of thing
+	-- {
+	-- 	"dlvhdr/gh-blame.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+	-- 	keys = {
+	-- 		{ "<leader>gbb", "<cmd>GhBlameCurrentLine<cr>", desc = "[G]itHub [B]lame [B]ranch" },
+	-- 	},
+	-- },
+	-- {
+	-- 	"ruifm/gitlinker.nvim",
+	--	dependencies = {
+	-- "nvim-lua/plenary.nvim",
+	-- },
+	-- },
 	{
 		"kdheepak/lazygit.nvim",
 		cmd = {
@@ -83,15 +90,15 @@ return {
 
 			-- diff keymaps
 			-- TODO: move these to diffview
-			nmap("<leader>gdm", "<cmd>DiffviewOpen master<CR>", "[G]it [D]iff [M]aster")
-			nmap("<leader>gdb", "<cmd>DiffviewOpen ", "[G]it [D]iff [B]ranch")
+			-- nmap("<leader>gdm", "<cmd>DiffviewOpen master<CR>", "[G]it [D]iff [M]aster")
+			-- nmap("<leader>gdb", "<cmd>DiffviewOpen ", "[G]it [D]iff [B]ranch")
 			-- nmap("<leader>gdt", "<cmd>Gitsigns diffthis<CR>", "[G]it [D]iff [T]his")
 
 			-- merge keymaps
-			nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
-			nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
-			nmap("<leader>gml", "<cmd>diffget //2<cr>", "Git Merge Left")
-			nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
+			-- nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
+			-- nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
+			-- nmap("<leader>gml", "<cmd>diffget //2<cr>", "Git Merge Left")
+			-- nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
 			-- :DiffviewOpen
 			-- :DiffviewOpen HEAD~2
 			-- :DiffviewOpen HEAD~4..HEAD~2
@@ -109,7 +116,7 @@ return {
 			-- 	vim.cmd("Gitsigns diffthis HEAD")
 			-- end, "[G]it [Diff] [H]ead")
 
-			nmap("<leader>gbc", function()
+			nmap("<leader>gb", function()
 				require("gitsigns").blame_line({ full = true })
 			end, "[G]it [B]lame [C]ommit")
 		end,
