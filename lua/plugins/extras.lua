@@ -13,7 +13,7 @@ return {
 			require("Comment").setup(opts)
 		end,
 	},
-	-- auto add closing brackets
+	--	auto add closing brackets
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -43,16 +43,21 @@ return {
 	},
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			presets = {
-				lsp_doc_border = true,
-			},
-		},
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
+		event = "VeryLazy",
+		opts = {},
+		config = function()
+			require("noice").setup({
+				lsp = {
+					signature = {
+						enabled = false, -- clashing with nvui and I don't know how to turn off nvui
+					},
+				},
+			})
+		end,
 	},
 }

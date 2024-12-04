@@ -15,7 +15,7 @@ M.ui = {
 		style = "bordered",
 	},
 	lsp = {
-		signature = true,
+		signature = false,
 	},
 	mason = {
 		pkgs = {},
@@ -29,6 +29,11 @@ M.ui = {
 			hex = true,
 			lspvars = true,
 		},
+	},
+
+	-- needs to be explicit in disabling
+	tabufline = {
+		enabled = false,
 	},
 }
 
