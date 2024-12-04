@@ -4,6 +4,12 @@ return {
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviwFocusFiles" },
+		keys = {
+			{ "<leader>gdm", "<cmd>DiffviewOpen origin/master<cr>", desc = "[G]it [D]iff [m]aster" },
+			{ "<leader>gdM", "<cmd>DiffviewOpen origin/main<cr>", desc = "[G]it [D]iff [M]ain" },
+			{ "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "[G]it [D]iff [o]pen" }, -- this will open to HEAD~1
+			{ "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "[G]it [D]iff [c]lose" },
+		},
 	},
 	-- NOTE: not sure about permissions for this sort of thing
 	-- {
@@ -89,9 +95,6 @@ return {
 			nmap("<leader>gs", "<cmd>Telescope git_status<CR>", "[G]it [S]tatus")
 
 			-- diff keymaps
-			-- TODO: move these to diffview
-			-- nmap("<leader>gdm", "<cmd>DiffviewOpen master<CR>", "[G]it [D]iff [M]aster")
-			-- nmap("<leader>gdb", "<cmd>DiffviewOpen ", "[G]it [D]iff [B]ranch")
 			-- nmap("<leader>gdt", "<cmd>Gitsigns diffthis<CR>", "[G]it [D]iff [T]his")
 
 			-- merge keymaps
