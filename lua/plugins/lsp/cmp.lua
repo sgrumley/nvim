@@ -8,6 +8,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+			"Snikimonkd/cmp-go-pkgs",
 			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
@@ -87,6 +88,7 @@ return {
 					{ name = "luasnip", group_index = 1 },
 					{ name = "buffer", group_index = 2 },
 					{ name = "path", group_index = 2 },
+					{ name = "go_pkgs", group_index = 1 },
 				}),
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
@@ -97,10 +99,10 @@ return {
 						return item
 					end,
 				},
-				experimental = {
-					hl_group = "LspCodeLens",
-					ghost_text = {},
-				},
+				-- experimental = {
+				-- 	hl_group = "LspCodeLens",
+				-- 	ghost_text = {},
+				-- },
 				window = {
 					documentation = {
 						border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

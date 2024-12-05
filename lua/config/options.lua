@@ -21,7 +21,7 @@ opt.fixeol = false -- Turn off appending new line in the end of a file
 
 -- Disable diagnostic test while lsp_lines.nvim is enabled
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 })
 
 -- Folding
@@ -58,6 +58,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 -- Quality Of Life
+vim.opt.timeoutlen = 750
 vim.opt.cursorline = true -- visual show of cursor line
 vim.opt.scrolloff = 15 -- start scrolling before end of page
 vim.g.have_nerd_font = true

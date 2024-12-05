@@ -33,7 +33,7 @@ return {
 			formatters_by_ft = {
 				go = { "gofumpt", "goimports-reviser" }, -- golines
 				templ = { "templ" },
-				sql = { "sql_formatter" }, -- sqlfluff
+				sql = { "sql_formatter" }, -- sql_formatter seems to be the one used in vscode
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
@@ -45,7 +45,6 @@ return {
 				yaml = { "yamlfmt" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
-
 				terraform = { "terraform_fmt" },
 				proto = { "buf" },
 			},

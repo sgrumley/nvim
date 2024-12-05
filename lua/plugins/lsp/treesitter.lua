@@ -42,12 +42,11 @@ return {
 				additional_vim_regex_highlighting = { "org", "markdown" },
 			},
 			refactor = {
-				-- TODO: delete vim-illuminate in favor of this
-				highlight_definitions = {
-					enable = true,
-					-- Set to false if you have an `updatetime` of ~100.
-					clear_on_cursor_move = true,
-				},
+				-- highlight_definitions = {
+				-- 	enable = true,
+				-- 	-- Set to false if you have an `updatetime` of ~100.
+				-- 	clear_on_cursor_move = true,
+				-- },
 				highlight_current_scope = { enable = true },
 			},
 			indent = {

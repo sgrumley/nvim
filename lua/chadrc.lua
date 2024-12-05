@@ -15,7 +15,7 @@ M.ui = {
 		style = "bordered",
 	},
 	lsp = {
-		signature = false,
+		signature = true,
 	},
 	mason = {
 		pkgs = {},
