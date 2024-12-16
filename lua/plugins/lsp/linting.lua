@@ -19,8 +19,7 @@ return {
 				"buf", -- for buf_lint
 				"tflint", -- for tflint
 				-- "jsonlint", -- for prettier
-				"golangci-lint",
-				-- "golangci-lint", -- for golangci_lint_ls
+				"golangci-lint", -- for golangci_lint_ls
 			},
 		})
 

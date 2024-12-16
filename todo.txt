@@ -1,2 +1,2 @@
-utilize both nvchad and go
-
+Base editor complete. Follow up by writing more code myself
+replace lspconfig

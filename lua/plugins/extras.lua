@@ -1,6 +1,8 @@
 return {
-	{ "tpope/vim-sleuth" },
-	{ "RRethy/vim-illuminate" },
+	{ "tpope/vim-sleuth" }, -- set shiftwidth based on the rest of the file
+	{ "karb94/neoscroll.nvim", opts = {} }, -- smooth scrolling
+	{ "RRethy/vim-illuminate" }, -- highlight matches under cursor
+	-- styled diagnostics
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "VeryLazy", -- Or `LspAttach`
@@ -9,19 +11,6 @@ return {
 			require("tiny-inline-diagnostic").setup({
 				preset = "modern", -- one of: "modern", "classic", "minimal", "powerline", ghost", "simple", "nonerdfont", "amongus"
 			})
-		end,
-	},
-	-- commenting lines
-	{
-		"numToStr/Comment.nvim",
-		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-		keys = { { "gc", mode = { "n", "v" } }, { "gcc", mode = { "n", "v" } }, { "gbc", mode = { "n", "v" } } },
-		config = function(_, _)
-			local opts = {
-				ignore = "^$",
-				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-			}
-			require("Comment").setup(opts)
 		end,
 	},
 	--	auto add closing brackets
@@ -37,11 +26,7 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
-	-- smooth scrolling
-	{
-		"karb94/neoscroll.nvim",
-		opts = {},
-	},
+	-- navigate panes with tmux
 	{
 		"alexghergh/nvim-tmux-navigation",
 		config = function()
@@ -52,6 +37,7 @@ return {
 			vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", {})
 		end,
 	},
+	-- stylised cmdline, popup menu and search
 	{
 		"folke/noice.nvim",
 		dependencies = {
@@ -65,7 +51,7 @@ return {
 			require("noice").setup({
 				lsp = {
 					signature = {
-						enabled = false, -- clashing with nvui and I don't know how to turn off nvui
+						enabled = true,
 					},
 				},
 			})

@@ -10,8 +10,6 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			sync_install = false,
-			-- NOTE: any language with a bit more customization will be added via
-			-- lua/plugins/lang
 			ensure_installed = {
 				"html",
 				"http",
@@ -41,19 +39,11 @@ return {
 				enable = true,
 				additional_vim_regex_highlighting = { "org", "markdown" },
 			},
-			refactor = {
-				-- highlight_definitions = {
-				-- 	enable = true,
-				-- 	-- Set to false if you have an `updatetime` of ~100.
-				-- 	clear_on_cursor_move = true,
-				-- },
-				highlight_current_scope = { enable = true },
-			},
 			indent = {
 				enable = true,
 			},
 			-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-			-- TODO: there is some move functionality to be added here
+			-- TODO: this can be refined a lot
 			textobjects = {
 				select = {
 					enable = true,
@@ -100,12 +90,12 @@ return {
 					-- Below will go to either the start or the end, whichever is closer.
 					-- Use if you want more granular movements
 					-- Make it even more gradual by adding multiple queries and regex.
-					goto_next = {
-						["]d"] = "@conditional.outer",
-					},
-					goto_previous = {
-						["[d"] = "@conditional.outer",
-					},
+					-- goto_next = {
+					-- 	["]d"] = "@conditional.outer",
+					-- },
+					-- goto_previous = {
+					-- 	["[d"] = "@conditional.outer",
+					-- },
 				},
 			},
 		},

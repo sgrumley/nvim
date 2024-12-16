@@ -1,4 +1,5 @@
-require("config.globals")
+local opt = vim.opt
+
 -- Tabs
 opt.expandtab = true -- Use spaces by default
 opt.shiftwidth = 2 -- Set amount of space characters, when we press "<" or ">"
@@ -8,18 +9,8 @@ opt.smartindent = true -- Turn on smart indentation. See in the docs for more in
 -- Clipboard
 opt.clipboard = "unnamedplus" -- Use system clipboard
 opt.fixeol = false -- Turn off appending new line in the end of a file
--- if vim.fn.has("wsl") == 1 then
--- 	vim.api.nvim_create_autocmd("TextYankPost", {
 
--- 		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
-
--- 		callback = function()
--- 			vim.fn.system("clip.exe", vim.fn.getreg('"'))
--- 		end,
--- 	})
--- end
-
--- Disable diagnostic test while lsp_lines.nvim is enabled
+-- Disable diagnostic test while plugin replaces functionality
 vim.diagnostic.config({
 	virtual_text = false,
 })
@@ -91,8 +82,19 @@ local disabled_built_ins = {
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-	g["loaded_" .. plugin] = 1
+	vim.g["loaded_" .. plugin] = 1
 end
--- }}}
+
+-- Handy solution when clipboard starts failing
+-- if vim.fn.has("wsl") == 1 then
+-- 	vim.api.nvim_create_autocmd("TextYankPost", {
+
+-- 		group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+
+-- 		callback = function()
+-- 			vim.fn.system("clip.exe", vim.fn.getreg('"'))
+-- 		end,
+-- 	})
+-- end
 
 -- vim: tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=1

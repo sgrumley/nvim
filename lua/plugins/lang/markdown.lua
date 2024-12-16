@@ -1,5 +1,4 @@
 return {
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
@@ -8,6 +7,7 @@ return {
 			end
 		end,
 	},
+	-- TODO: remove mason plugins in favor of this at the top of the file
 	{
 		"williamboman/mason.nvim",
 		opts = function(_, opts)
@@ -23,7 +23,6 @@ return {
 			},
 		},
 	},
-
 	-- Markdown preview
 	{
 		"iamcco/markdown-preview.nvim",

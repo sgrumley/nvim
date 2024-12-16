@@ -2,23 +2,30 @@ return {
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			modes = {
+				char = {
+					jump_labels = true,
+					keys = {}, -- explicitly remove the standard 'f' functionality in favor of the below keymaps
+				},
+			},
+		},
 		keys = {
 			{
-				"s",
+				"f",
 				mode = { "n", "x", "o" },
 				function()
 					require("flash").jump()
 				end,
-				desc = "Flash",
+				desc = "Jump Text",
 			},
 			{
-				"S",
+				"F",
 				mode = { "n", "x", "o" },
 				function()
 					require("flash").treesitter()
 				end,
-				desc = "Flash Treesitter",
+				desc = "Jump Treesitter Nodes",
 			},
 		},
 	},
