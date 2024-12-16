@@ -1,2 +1,6 @@
 Base editor complete. Follow up by writing more code myself
 replace lspconfig
+remove mason plugins and just keep mason
+start optimizing lazy starts where possible
+play with telescope pickers
+-> setup: testing, debugging and database tooling
