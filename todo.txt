@@ -4,3 +4,5 @@ remove mason plugins and just keep mason
 start optimizing lazy starts where possible
 play with telescope pickers
 -> setup: testing, debugging and database tooling
+-> fix blink to work with cmd line autocomplete
+-> some sort of status line 
