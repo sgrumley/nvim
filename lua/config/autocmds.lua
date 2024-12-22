@@ -1,4 +1,4 @@
--- Lsp attachment
+-- Lsp attachment setup
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gK", vim.lsp.buf.signature_help, "Signature Help")
 
 		-- diagnostics
-		diaFunc = function(next, severity)
+		local diaFunc = function(next, severity)
 			local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
 			severity = severity and vim.diagnostic.severity[severity] or nil
 			return function()
@@ -37,6 +37,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("[e", diaFunc(false, "ERROR"), "Prev Error")
 		map("]w", diaFunc(true, "WARNING"), "Next Warning")
 		map("[w", diaFunc(false, "WARNING"), "Prev Warning")
+	end,
+})
+
+-- Format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		local format_filetypes = { "lua", "go", "css", "sql", "typescript", "javascript", "rust" }
+		if vim.tbl_contains(format_filetypes, vim.bo.filetype) then
+			require("conform").format({ async = false, lsp_fallback = true })
+		end
 	end,
 })
 
