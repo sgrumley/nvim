@@ -7,7 +7,6 @@ return {
 			end
 		end,
 	},
-	-- TODO: remove mason plugins in favor of this at the top of the file
 	{
 		"williamboman/mason.nvim",
 		opts = function(_, opts)

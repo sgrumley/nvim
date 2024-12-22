@@ -1,5 +1,7 @@
 return {
 	{
+		-- :Inspect
+		-- :InspectTree -> you can press o here to get the interactive playground
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
 			"vrischmann/tree-sitter-templ",
@@ -13,7 +15,6 @@ return {
 			ensure_installed = {
 				"html",
 				"http",
-				"org",
 				"templ",
 				"markdown",
 				"query",
@@ -33,11 +34,15 @@ return {
 				"hcl",
 				"yaml",
 				"python",
+				"go",
+				"gomod",
+				"gowork",
+				"gosum",
 			},
 			autoinstall = true,
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = { "org", "markdown" },
+				additional_vim_regex_highlighting = { "markdown" },
 			},
 			indent = {
 				enable = true,

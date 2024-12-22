@@ -1,5 +1,5 @@
 return {
-	{ "tpope/vim-sleuth" }, -- set shiftwidth based on the rest of the file
+	-- { "tpope/vim-sleuth" }, -- set shiftwidth based on the rest of the file
 	{ "karb94/neoscroll.nvim", opts = {} }, -- smooth scrolling
 	{ "RRethy/vim-illuminate" }, -- highlight matches under cursor
 	-- styled diagnostics

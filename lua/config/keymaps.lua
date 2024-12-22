@@ -1,5 +1,12 @@
 require("config.helpers")
 
+--[[
+  Helpful Commands
+  - `:verbose setlocal ts?` -> shows what last changed tabshift option
+  - `:cnext` -> next file in quickfix list (good for git merges)
+  - [c-q] -> dumps telescope list into quickfix
+]]
+
 vim.g.mapleader = " "
 
 -- after go mod tidy you need to restart the LSP

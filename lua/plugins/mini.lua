@@ -9,6 +9,16 @@ return {
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
+
+			-- status
+			local statusline = require("mini.statusline")
+			statusline.setup({ use_icons = true })
+
+			-- scope
+			local indent = require("mini.indentscope")
+			indent.setup({
+				symbol = "│",
+			})
 		end,
 	},
 }

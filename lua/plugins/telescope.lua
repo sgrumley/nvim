@@ -27,7 +27,6 @@ return {
 			{ "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Grep Search" },
 			{ "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
 			{ "<leader>fD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-			-- TODO: write this myself
 			{ "<leader>fs", "<cmd>Telescope dir live_grep<CR>", desc = "[F]ind [S]cope grep" },
 
 			-- editor based searching

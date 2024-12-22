@@ -1,8 +1,6 @@
 Base editor complete. Follow up by writing more code myself
-replace lspconfig
-remove mason plugins and just keep mason
-start optimizing lazy starts where possible
-play with telescope pickers
+-> start optimizing lazy starts where possible
+-> lang files should be a module with a plugins var and setup vars
 -> setup: testing, debugging and database tooling
--> fix blink to work with cmd line autocomplete
--> some sort of status line 
+-> is blink theme working?
+

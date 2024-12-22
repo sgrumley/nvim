@@ -17,10 +17,10 @@ vim.diagnostic.config({
 
 -- Folding
 -- refer to treesitterlua config for foldmethod
-vim.opt.foldtext = ""
-vim.opt.foldlevel = 5
-vim.opt.foldlevelstart = 3
-vim.opt.foldnestmax = 4
+opt.foldtext = ""
+opt.foldlevel = 5
+opt.foldlevelstart = 3
+opt.foldnestmax = 4
 
 -- Line Number
 opt.number = true
@@ -42,21 +42,21 @@ opt.wildmenu = true
 opt.wildmode = "longest:full,full"
 
 -- Whitespace
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- To be determined
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 
 -- Quality Of Life
-vim.opt.timeoutlen = 750
-vim.opt.cursorline = true -- visual show of cursor line
-vim.opt.scrolloff = 15 -- start scrolling before end of page
+opt.timeoutlen = 750
+opt.cursorline = true -- visual show of cursor line
+opt.scrolloff = 15 -- start scrolling before end of page
 vim.g.have_nerd_font = true
-vim.o.termguicolors = true
-vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better completion experience
-vim.o.undofile = true -- Save undo history
-vim.o.breakindent = true -- Enable break indent
+opt.termguicolors = true
+opt.completeopt = "menuone,noselect" -- Set completeopt to have a better completion experience
+opt.undofile = true -- Save undo history
+opt.breakindent = true -- Enable break indent
 opt.signcolumn = "yes" -- reserves room on the left side of the buffer for things such as error markers or break points
 
 -- Default Plugins {{{

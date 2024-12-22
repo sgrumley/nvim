@@ -8,7 +8,7 @@ return {
 				integrations = {
 					diffview = true,
 					treesitter = true,
-					blink_cmp = true,
+					blink_cmp = false,
 					flash = true,
 					gitsigns = true,
 					noice = true,
@@ -18,7 +18,10 @@ return {
 						lsp = false,
 					},
 					which_key = true,
-					-- lualine = true,
+					mini = {
+						indentscope_color = "rosewater",
+						enabled = true,
+					},
 				},
 			})
 
@@ -28,7 +31,7 @@ return {
 			})
 
 			-- set theme
-			vim.cmd.colorscheme("catppuccin-mocha")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }

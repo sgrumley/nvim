@@ -1,3 +1,45 @@
+-- Lsp attachment
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+	callback = function(event)
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
+		end
+
+		-- code nav
+		map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+		map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+		map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+		map("gt", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+
+		-- code actions
+		map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
+		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+		map("<leader>cs", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+		map("<leader>cS", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+		-- docs
+		map("K", vim.lsp.buf.hover, "Hover Documentation")
+		map("gK", vim.lsp.buf.signature_help, "Signature Help")
+
+		-- diagnostics
+		diaFunc = function(next, severity)
+			local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+			severity = severity and vim.diagnostic.severity[severity] or nil
+			return function()
+				go({ severity = severity })
+			end
+		end
+
+		map("]d", vim.diagnostic.goto_next, "Next Diagnostic")
+		map("[d", vim.diagnostic.goto_prev, "Prev Diagnostic")
+		map("]e", diaFunc(true, "ERROR"), "Next Error")
+		map("[e", diaFunc(false, "ERROR"), "Prev Error")
+		map("]w", diaFunc(true, "WARNING"), "Next Warning")
+		map("[w", diaFunc(false, "WARNING"), "Prev Warning")
+	end,
+})
+
 -- Enable spell checking for certain file types
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.txt", "*.md" },
@@ -27,18 +69,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- 		if mark[1] > 0 and mark[1] <= lcount then
 -- 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 -- 		end
--- 	end,
--- })
-
--- wrap words "softly" (no carriage return) in mail buffer
--- api.nvim_create_autocmd("Filetype", {
--- 	pattern = "mail",
--- 	callback = function()
--- 		vim.opt.textwidth = 0
--- 		vim.opt.wrapmargin = 0
--- 		vim.opt.wrap = true
--- 		vim.opt.linebreak = true
--- 		vim.opt.columns = 80
--- 		vim.opt.colorcolumn = "80"
 -- 	end,
 -- })
