@@ -13,6 +13,10 @@ opt.fixeol = false -- Turn off appending new line in the end of a file
 -- Disable diagnostic test while plugin replaces functionality
 vim.diagnostic.config({
 	virtual_text = false,
+	severity_sort = true,
+	float = {
+		severity_sort = true,
+	},
 })
 
 -- Folding

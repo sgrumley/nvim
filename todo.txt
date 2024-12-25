@@ -4,3 +4,4 @@ Base editor complete. Follow up by writing more code myself
 -> setup: testing, debugging and database tooling
 -> is blink theme working?
 
+-> search with n is only going in reverse
