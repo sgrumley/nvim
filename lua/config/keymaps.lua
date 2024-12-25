@@ -57,7 +57,7 @@ Nmap("<C-u>", "<C-u>zz")
 
 -- Center screen when interating through search results
 Nmap("n", "nzzzv")
-Nmap("n", "N", "Nzzzv")
+Nmap("N", "Nzzzv")
 
 -- Better indent
 Vmap("<", "<gv")
