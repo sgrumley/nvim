@@ -79,3 +79,6 @@ Vmap("p", '"_dp')
 -- Insert blank line
 Nmap("]<Space>", "o<Esc>")
 Nmap("[<Space>", "O<Esc>")
+
+-- Lazy plugins that need keymaps
+Nmap("<leader>b", ":DBUIToggle<CR>", "Data[B]ase")

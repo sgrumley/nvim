@@ -5,6 +5,7 @@ return {
 			local wk = require("which-key")
 			wk.add({
 				{ "<leader>a", group = "󱡁 [A]rrow" },
+				{ "<leader>b", group = " Data[B]ase" },
 				{ "<leader>c", group = "󰘦 [C]ode" },
 				{ "<leader>d", group = " [D]ebug" },
 				{ "<leader>de", group = " [E]xecute" },
