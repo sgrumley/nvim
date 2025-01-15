@@ -38,6 +38,8 @@ return {
 				"gomod",
 				"gowork",
 				"gosum",
+				"zig",
+				"odin",
 			},
 			autoinstall = true,
 			highlight = {
@@ -129,6 +131,23 @@ return {
 				zindex = 20, -- The Z-index of the context window
 				on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 			})
+
+			-- custom config for bifrost files to be parsed
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.bifrost = {
+				install_info = {
+					url = "/home/sgrumley/.local/share/nvim/tree-sitter/start/ts-bifrost", -- local path or git repo
+					files = { "src/parser.c" },
+				},
+				filetype = "bfr",
+			}
+			vim.filetype.add({
+				extension = {
+					bfr = "bfr",
+				},
+			})
+
+			vim.treesitter.language.register("bifrost", "bfr")
 		end,
 	},
 }

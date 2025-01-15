@@ -32,6 +32,8 @@ return {
 					filetypes = { "yaml.docker-compose", "compose.yaml" },
 				},
 				marksman = {},
+				zls = {}, -- consider https://github.com/NTBBloodbath/zig-tools.nvim
+				ols = {},
 				-- buf_language_server = {}, // TODO:
 				buf = {},
 				sqlls = {},
