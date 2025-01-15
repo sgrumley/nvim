@@ -1,0 +1,153 @@
+return {
+	-- ---@param config {args?:string[]|fun():string[]?}
+	-- local function get_args(config)
+	-- 	local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+	-- 	config = vim.deepcopy(config)
+	-- 	---@cast args string[]
+	-- 	config.args = function()
+	-- 		local new_args = vim.fn.input("Run with args: ", table.concat(args, " ")) --[[@as string]]
+	-- 		return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
+	-- 	end
+	-- 	return config
+	-- end
+
+	-- NOTE: below this is neotest. This might be a good idea to split into another file or move configs into config dir
+	-- 	{
+	-- 		"folke/which-key.nvim",
+	-- 		optional = true,
+	-- 		opts = {
+	-- 			defaults = {
+	-- 				["<leader>t"] = { name = "+test" },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	{
+	-- 		"nvim-neotest/neotest",
+	-- 		opts = {
+	-- 			-- Can be a list of adapters like what neotest expects,
+	-- 			-- or a list of adapter names,
+	-- 			-- or a table of adapter names, mapped to adapter configs.
+	-- 			-- The adapter will then be automatically loaded with the config.
+	-- 			adapters = {},
+	-- 			-- Example for loading neotest-go with a custom config
+	-- 			-- adapters = {
+	-- 			--   ["neotest-go"] = {
+	-- 			--     args = { "-tags=integration" },
+	-- 			--   },
+	-- 			-- },
+	-- 			status = { virtual_text = true },
+	-- 			output = { open_on_run = true },
+	-- 			quickfix = {
+	-- 				open = function()
+	-- 					if require("lazyvim.util").has("trouble.nvim") then
+	-- 						require("trouble").open({ mode = "quickfix", focus = false })
+	-- 					else
+	-- 						vim.cmd("copen")
+	-- 					end
+	-- 				end,
+	-- 			},
+	-- 		},
+	-- 		config = function(_, opts)
+	-- 			local neotest_ns = vim.api.nvim_create_namespace("neotest")
+	-- 			vim.diagnostic.config({
+	-- 				virtual_text = {
+	-- 					format = function(diagnostic)
+	-- 						-- Replace newline and tab characters with space for more compact diagnostics
+	-- 						local message =
+	-- 							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+	-- 						return message
+	-- 					end,
+	-- 				},
+	-- 			}, neotest_ns)
+
+	-- 			-- if require("lazyvim.util").has("trouble.nvim") then
+	-- 			opts.consumers = opts.consumers or {}
+	-- 			-- Refresh and auto close trouble after running tests
+	-- 			---@type neotest.Consumer
+	-- 			opts.consumers.trouble = function(client)
+	-- 				client.listeners.results = function(adapter_id, results, partial)
+	-- 					if partial then
+	-- 						return
+	-- 					end
+	-- 					local tree = assert(client:get_position(nil, { adapter = adapter_id }))
+
+	-- 					local failed = 0
+	-- 					for pos_id, result in pairs(results) do
+	-- 						if result.status == "failed" and tree:get_key(pos_id) then
+	-- 							failed = failed + 1
+	-- 						end
+	-- 					end
+	-- 					vim.schedule(function()
+	-- 						local trouble = require("trouble")
+	-- 						if trouble.is_open() then
+	-- 							trouble.refresh()
+	-- 							if failed == 0 then
+	-- 								trouble.close()
+	-- 							end
+	-- 						end
+	-- 					end)
+	-- 					return {}
+	-- 				end
+	-- 			end
+	-- 			-- end
+
+	-- 			if opts.adapters then
+	-- 				local adapters = {}
+	-- 				for name, config in pairs(opts.adapters or {}) do
+	-- 					if type(name) == "number" then
+	-- 						if type(config) == "string" then
+	-- 							config = require(config)
+	-- 						end
+	-- 						adapters[#adapters + 1] = config
+	-- 					elseif config ~= false then
+	-- 						local adapter = require(name)
+	-- 						if type(config) == "table" and not vim.tbl_isempty(config) then
+	-- 							local meta = getmetatable(adapter)
+	-- 							if adapter.setup then
+	-- 								adapter.setup(config)
+	-- 							elseif meta and meta.__call then
+	-- 								adapter(config)
+	-- 							else
+	-- 								error("Adapter " .. name .. " does not support setup")
+	-- 							end
+	-- 						end
+	-- 						adapters[#adapters + 1] = adapter
+	-- 					end
+	-- 				end
+	-- 				opts.adapters = adapters
+	-- 			end
+
+	-- 			require("neotest").setup(opts)
+	-- 		end,
+	--     -- stylua: ignore
+	--     keys = {
+	--       { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
+	--       { "<leader>tT", function() require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
+	--       { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
+	--       { "<leader>tl", function() require("neotest").run.run_last() end, desc = "Run Last" },
+	--       { "<leader>tw", function() require("neotest").watch.toggle() end, desc = "Watch Run" },
+	--       { "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
+	--       { "<leader>to", function() require("neotest").output.open({ enter = true, auto_close = true }) end, desc = "Show Output" },
+	--       { "<leader>tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
+	--       { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
+	--     },
+	-- 	},
+	-- NOTE: a rough experience for testing, leaving here as a reminder to check if it's better
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	optional = true,
+	-- 	dependencies = {
+	-- 		"nvim-neotest/neotest-go",
+	-- 	},
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			["neotest-go"] = {
+	-- 				-- Here we can set options for neotest-go, e.g.
+	-- 				experimental = {
+	-- 					test_table = true,
+	-- 				},
+	-- 				args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
+	-- 			},
+	-- 		},
+	-- 	},
+}
