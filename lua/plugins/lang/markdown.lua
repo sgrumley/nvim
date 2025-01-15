@@ -1,5 +1,4 @@
 return {
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
@@ -23,7 +22,6 @@ return {
 			},
 		},
 	},
-
 	-- Markdown preview
 	{
 		"iamcco/markdown-preview.nvim",

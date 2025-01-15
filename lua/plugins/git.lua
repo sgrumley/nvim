@@ -4,12 +4,11 @@ return {
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviwFocusFiles" },
-	},
-	{
-		"dlvhdr/gh-blame.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
 		keys = {
-			{ "<leader>gbb", "<cmd>GhBlameCurrentLine<cr>", desc = "[G]itHub [B]lame [B]ranch" },
+			{ "<leader>gdm", "<cmd>DiffviewOpen origin/master<cr>", desc = "[G]it [D]iff [m]aster" },
+			{ "<leader>gdM", "<cmd>DiffviewOpen origin/main<cr>", desc = "[G]it [D]iff [M]ain" },
+			{ "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "[G]it [D]iff [o]pen" }, -- this will open to HEAD~1
+			{ "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "[G]it [D]iff [c]lose" },
 		},
 	},
 	{
@@ -42,8 +41,6 @@ return {
 					changedelete = { text = "~" },
 				},
 				on_attach = function(bufnr)
-					-- vim.keymap.set('n', '<leader>gh', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-
 					-- don't override the built-in and fugitive keymaps
 					local gs = package.loaded.gitsigns
 					vim.keymap.set({ "n", "v" }, "]c", function()
@@ -75,43 +72,36 @@ return {
 			})
 
 			-- keymaps
-			nmap("<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", "[G]it Preview Chunk")
+			Nmap("<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", "[G]it Preview Chunk")
 
-			nmap("<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", "[G]it [S]tage Chunk")
-			nmap("<leader>gu", "<cmd>Gitsigns reset_hunk<CR>", "[G]it [U]ndo Chunk")
-			nmap("<leader>gs", "<cmd>Telescope git_status<CR>", "[G]it [S]tatus")
-
-			-- diff keymaps
-			-- TODO: move these to diffview
-			nmap("<leader>gdm", "<cmd>DiffviewOpen master<CR>", "[G]it [D]iff [M]aster")
-			nmap("<leader>gdb", "<cmd>DiffviewOpen ", "[G]it [D]iff [B]ranch")
-			-- nmap("<leader>gdt", "<cmd>Gitsigns diffthis<CR>", "[G]it [D]iff [T]his")
+			Nmap("<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", "[G]it [S]tage Chunk")
+			Nmap("<leader>gu", "<cmd>Gitsigns reset_hunk<CR>", "[G]it [U]ndo Chunk")
+			Nmap("<leader>gs", "<cmd>Telescope git_status<CR>", "[G]it [S]tatus")
 
 			-- merge keymaps
-			nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
-			nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
-			nmap("<leader>gml", "<cmd>diffget //2<cr>", "Git Merge Left")
-			nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
-			-- :DiffviewOpen
-			-- :DiffviewOpen HEAD~2
-			-- :DiffviewOpen HEAD~4..HEAD~2
-			-- :DiffviewOpen d4a7b0d
-			-- :DiffviewOpen d4a7b0d^!
-			-- :DiffviewOpen d4a7b0d..519b30e
-			-- :DiffviewOpen origin/main...HEAD
+			-- nmap("<leader>gms", "<cmd>Gvdiffsplit!<cr>", "Git Merge Split")
+			-- nmap("<leader>gmc", "<cmd>G<cr>", "Git Merge Conflicts List")
+			-- nmap("<leader>gml", "<cmd>diffget //2<cr>", "Git Merge Left")
+			-- nmap("<leader>gmr", "<cmd>diffget //3<cr>", "Git Merge Right")
 			--
-			-- These commands are usually done via lazygit
-			-- nmap("<leader>gc", "<cmd>Telescope git_bcommits<CR>", "[G]it [C]ommits (Current File)")
-			-- nmap("<leader>gca", "<cmd>Telescope git_commits<CR>", "[G]it [C]ommits [A]ll")
 			-- nmap("<leader>gb", "<cmd>Telescope git_branches<CR>", "[G]it [B]ranches")
-
-			-- nmap("<leader>gdd", function()
-			-- 	vim.cmd("Gitsigns diffthis HEAD")
-			-- end, "[G]it [Diff] [H]ead")
-
-			nmap("<leader>gbc", function()
+			Nmap("<leader>gb", function()
 				require("gitsigns").blame_line({ full = true })
 			end, "[G]it [B]lame [C]ommit")
 		end,
 	},
 }
+-- NOTE: not sure about permissions for this sort of thing
+-- {
+-- 	"dlvhdr/gh-blame.nvim",
+-- 	dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+-- 	keys = {
+-- 		{ "<leader>gbb", "<cmd>GhBlameCurrentLine<cr>", desc = "[G]itHub [B]lame [B]ranch" },
+-- 	},
+-- },
+-- {
+-- 	"ruifm/gitlinker.nvim",
+--	dependencies = {
+-- "nvim-lua/plenary.nvim",
+-- },
+-- },

@@ -1,7 +1,10 @@
 return {
 	{
+		-- :Inspect
+		-- :InspectTree -> you can press o here to get the interactive playground
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
+			"vrischmann/tree-sitter-templ",
 			"nvim-treesitter/nvim-treesitter-context",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
@@ -9,12 +12,10 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			sync_install = false,
-			-- NOTE: any language with a bit more customization will be added via
-			-- lua/plugins/lang
 			ensure_installed = {
 				"html",
 				"http",
-				"org",
+				"templ",
 				"markdown",
 				"query",
 				"regex",
@@ -33,26 +34,23 @@ return {
 				"hcl",
 				"yaml",
 				"python",
+				"go",
+				"gomod",
+				"gowork",
+				"gosum",
+				"zig",
+				"odin",
 			},
 			autoinstall = true,
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = { "org", "markdown" },
-			},
-			refactor = {
-				-- TODO: delete vim-illuminate in favor of this
-				highlight_definitions = {
-					enable = true,
-					-- Set to false if you have an `updatetime` of ~100.
-					clear_on_cursor_move = true,
-				},
-				highlight_current_scope = { enable = true },
+				additional_vim_regex_highlighting = { "markdown" },
 			},
 			indent = {
 				enable = true,
 			},
 			-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-			-- TODO: there is some move functionality to be added here
+			-- TODO: this can be refined a lot
 			textobjects = {
 				select = {
 					enable = true,
@@ -99,12 +97,12 @@ return {
 					-- Below will go to either the start or the end, whichever is closer.
 					-- Use if you want more granular movements
 					-- Make it even more gradual by adding multiple queries and regex.
-					goto_next = {
-						["]d"] = "@conditional.outer",
-					},
-					goto_previous = {
-						["[d"] = "@conditional.outer",
-					},
+					-- goto_next = {
+					-- 	["]d"] = "@conditional.outer",
+					-- },
+					-- goto_previous = {
+					-- 	["[d"] = "@conditional.outer",
+					-- },
 				},
 			},
 		},
@@ -133,6 +131,23 @@ return {
 				zindex = 20, -- The Z-index of the context window
 				on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 			})
+
+			-- custom config for bifrost files to be parsed
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.bifrost = {
+				install_info = {
+					url = "/home/sgrumley/.local/share/nvim/tree-sitter/start/ts-bifrost", -- local path or git repo
+					files = { "src/parser.c" },
+				},
+				filetype = "bfr",
+			}
+			vim.filetype.add({
+				extension = {
+					bfr = "bfr",
+				},
+			})
+
+			vim.treesitter.language.register("bifrost", "bfr")
 		end,
 	},
 }

@@ -1,16 +1,16 @@
--- ---@param config {args?:string[]|fun():string[]?}
--- local function get_args(config)
--- 	local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
--- 	config = vim.deepcopy(config)
--- 	---@cast args string[]
--- 	config.args = function()
--- 		local new_args = vim.fn.input("Run with args: ", table.concat(args, " ")) --[[@as string]]
--- 		return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
--- 	end
--- 	return config
--- end
-
 return {
+	-- ---@param config {args?:string[]|fun():string[]?}
+	-- local function get_args(config)
+	-- 	local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+	-- 	config = vim.deepcopy(config)
+	-- 	---@cast args string[]
+	-- 	config.args = function()
+	-- 		local new_args = vim.fn.input("Run with args: ", table.concat(args, " ")) --[[@as string]]
+	-- 		return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
+	-- 	end
+	-- 	return config
+	-- end
+
 	-- NOTE: below this is neotest. This might be a good idea to split into another file or move configs into config dir
 	-- 	{
 	-- 		"folke/which-key.nvim",
@@ -132,5 +132,22 @@ return {
 	--       { "<leader>tS", function() require("neotest").run.stop() end, desc = "Stop" },
 	--     },
 	-- 	},
+	-- NOTE: a rough experience for testing, leaving here as a reminder to check if it's better
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	optional = true,
+	-- 	dependencies = {
+	-- 		"nvim-neotest/neotest-go",
+	-- 	},
+	-- 	opts = {
+	-- 		adapters = {
+	-- 			["neotest-go"] = {
+	-- 				-- Here we can set options for neotest-go, e.g.
+	-- 				experimental = {
+	-- 					test_table = true,
+	-- 				},
+	-- 				args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
+	-- 			},
+	-- 		},
+	-- 	},
 }
--- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0

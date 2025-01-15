@@ -7,6 +7,7 @@ return {
 				{ "<leader>a", group = "󱡁 [A]rrow" },
 				{ "<leader>c", group = "󰘦 [C]ode" },
 				{ "<leader>d", group = " [D]ebug" },
+				{ "<leader>de", group = " [E]xecute" },
 				{ "<leader>f", group = "󰥨 [F]ind File" },
 				{ "<leader>g", group = " [G]it" },
 				{ "<leader>l", group = " [L]anguage" },

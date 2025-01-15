@@ -1,20 +1,7 @@
-TODO:
-- json and yaml should lint but not format on save
-- ensure mason installs everything required
-- write readme
-- Have Icons available in config for consistency
-- Move which key names to align with update providing icons
-- project plugin
-- check out: https://github.com/piersolenski/wtf.nvim - chatgpt
-- github.com/ThePrimeagen/refactoring.nvim
-- consider https://github.com/creativecreature/pulse
-- Work towards a better folds solution
-  - using a treesitter query per language or per file type
-  - would be nice to have different fold levels on go tests vs go code
+Base editor complete. Follow up by writing more code myself
+-> start optimizing lazy starts where possible
+-> lang files should be a module with a plugins var and setup vars
+-> setup: testing, debugging and database tooling
+-> is blink theme working?
 
-Learn: 
-- treesitter text objects (move)
-- testing
-- fugitive git merge
-- surround
-
+-> search with n is only going in reverse

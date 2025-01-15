@@ -10,9 +10,9 @@ return {
 					-- TODO: example
 					TODO = { icon = " ", color = "info" },
 					-- NOTE: example
-					NOTE = { icon = "󱞁 ", color = "info", alt = { "INFO" } },
+					NOTE = { icon = "󱞁 ", color = "hint", alt = { "INFO" } },
 					-- TEST: example
-					TEST = { icon = "󰙨 ", color = "hint", alt = { "TESTING", "PASSED", "FAILED" } },
+					TEST = { icon = "󰙨 ", color = "warning", alt = { "TESTING", "PASSED", "FAILED" } },
 					-- HACK: example
 					HACK = { icon = " ", color = "warning" },
 					-- WARN: example

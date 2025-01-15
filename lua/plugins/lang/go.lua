@@ -60,56 +60,7 @@ return {
 					},
 				},
 			},
-			setup = {
-				gopls = function(_, opts)
-					-- attempt to set custom folds per language
-					vim.treesitter.set_query(
-						"go",
-						"folds",
-						[[
-						(function_definition (block) @fold)
-						(class_definition (block) @fold)
-					]]
-					)
-					-- workaround for gopls not supporting semanticTokensProvider
-					-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-					require("lazyvim.util").lsp.on_attach(function(client, _)
-						if client.name == "gopls" then
-							if not client.server_capabilities.semanticTokensProvider then
-								local semantic = client.config.capabilities.textDocument.semanticTokens
-								client.server_capabilities.semanticTokensProvider = {
-									full = true,
-									legend = {
-										tokenTypes = semantic.tokenTypes,
-										tokenModifiers = semantic.tokenModifiers,
-									},
-									range = true,
-								}
-							end
-						end
-					end)
-					-- end workaround
-				end,
-			},
+			setup = {},
 		},
 	},
-	-- NOTE: a rough experience for testing, leaving here as a reminder to check if it's better
-	-- {
-	-- 	"nvim-neotest/neotest",
-	-- 	optional = true,
-	-- 	dependencies = {
-	-- 		"nvim-neotest/neotest-go",
-	-- 	},
-	-- 	opts = {
-	-- 		adapters = {
-	-- 			["neotest-go"] = {
-	-- 				-- Here we can set options for neotest-go, e.g.
-	-- 				experimental = {
-	-- 					test_table = true,
-	-- 				},
-	-- 				args = { "-count=1", "-timeout=15s" }, -- , "| tparse -format=markdown" },
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 }
