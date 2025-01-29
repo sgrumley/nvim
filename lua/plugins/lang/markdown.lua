@@ -41,10 +41,12 @@ return {
 			vim.cmd([[do FileType]])
 		end,
 	},
+	-- would like to try out https://github.com/OXY2DEV/markview.nvim
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		opts = {},
-		-- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		opts = {
+			file_types = { "markdown", "copilot-chat" },
+		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 	},
 }
