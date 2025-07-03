@@ -37,8 +37,9 @@ return {
 				-- buf_language_server = {}, // TODO:
 				buf = {},
 				sqlls = {},
-				prettier = {},
+				-- prettier = {},
 				yamlls = {},
+				ts_ls = {},
 				terraformls = {},
 				jsonls = {
 					settings = {

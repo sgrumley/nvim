@@ -40,6 +40,7 @@ return {
 				"gosum",
 				"zig",
 				"odin",
+				"typescript",
 			},
 			autoinstall = true,
 			highlight = {

@@ -7,6 +7,7 @@ return {
 				"golangcilint",
 				"tflint",
 				"buf_lint",
+				"biome",
 			})
 		end,
 	},

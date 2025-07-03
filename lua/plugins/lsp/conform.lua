@@ -13,6 +13,7 @@ return {
 				"buf",
 				"terraform_fmt",
 				"yamlfmt",
+				"biome",
 			})
 		end,
 	},
@@ -37,9 +38,9 @@ return {
 				templ = { "templ" },
 				sql = { "sql_formatter" }, -- sql_formatter seems to be the one used in vscode
 				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
+				typescript = { "biome" },
+				javascriptreact = { "biome" },
+				typescriptreact = { "biome" },
 				svelte = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
