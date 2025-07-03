@@ -30,6 +30,7 @@ return {
 		-- <C-l> refresh
 	},
 	{
+		-- consider https://github.com/benomahony/oil-git.nvim
 		"SirZenith/oil-vcs-status",
 		dependencies = {
 			"stevearc/oil.nvim",

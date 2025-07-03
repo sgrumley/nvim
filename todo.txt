@@ -5,3 +5,11 @@ Base editor complete. Follow up by writing more code myself
 -> is blink theme working?
 
 -> search with n is only going in reverse
+
+Upcoming plugins to test:
+- ai codecompanion vs avante
+- octo for github -> use `use_local_fs` = true
+- hardtime
+- oil-git as replacement: https://github.com/benomahony/oil-git.nvim
+- https://github.com/aaronik/treewalker.nvim
+- replace dap-ui: https://github.com/igorlfs/nvim-dap-view
