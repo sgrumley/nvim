@@ -12,4 +12,17 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
+	{
+		"github/copilot.vim",
+		config = function()
+			vim.g.copilot_filetypes = {
+				["*"] = false,
+			}
+			-- vim.g.copilot_no_tab_map = true
+			-- vim.g.copilot_assume_mapped = true
+			-- vim.g.copilot_commit_on_enter = false
+			-- vim.g.copilot_enable_snippet_in_insert_mode = true
+			-- vim.g.copilot_suggestion_text_hl_group = "CopilotSuggestion"
+		end,
+	},
 }
