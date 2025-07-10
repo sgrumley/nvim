@@ -4,13 +4,12 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
-			"rcarriga/nvim-dap-ui",
-			"leoluz/nvim-dap-go",
-			"nvim-neotest/nvim-nio",
 			{
-				"theHamsta/nvim-dap-virtual-text",
+				"igorlfs/nvim-dap-view",
 				opts = {},
 			},
+			"leoluz/nvim-dap-go",
+			"nvim-neotest/nvim-nio",
 			{
 				"jay-babu/mason-nvim-dap.nvim",
 				dependencies = "mason.nvim",
@@ -29,30 +28,34 @@ return {
 			if not dap_ok then
 				require("notify")("dap not installed", "warning")
 			end
-			local dap_ui_ok, ui = pcall(require, "dapui")
-			if not dap_ui_ok then
-				require("notify")("dap-ui not installed", "warning")
+
+			local dap_view_ok, ui = pcall(require, "dap-view")
+			if not dap_view_ok then
+				require("notify")("dap-view not installed", "warning")
 			end
 
-			require("dap-go").setup({})
+			require("dap-go").setup({
+				tests = {
+					verbose = true,
+				},
+			})
 			ui.setup()
 
-			dap.listeners.before.attach.dapui_config = function()
+			dap.listeners.before.attach["dap-view-config"] = function()
 				ui.open()
 			end
-			dap.listeners.before.launch.dapui_config = function()
+			dap.listeners.before.launch["dap-view-config"] = function()
 				ui.open()
 			end
-			dap.listeners.before.event_terminated.dapui_config = function(session)
-				vim.notify("Debug session terminated", vim.log.levels.INFO)
+			dap.listeners.before.event_terminated["dap-view-config"] = function()
 				ui.close()
 			end
-			dap.listeners.before.event_exited.dapui_config = function(_, exit_code)
-				vim.notify("Debug session exited with code: " .. tostring(exit_code), vim.log.levels.INFO)
+			dap.listeners.before.event_exited["dap-view-config"] = function()
 				ui.close()
 			end
 
 			-- debug with vscode format launch.json file
+			-- TODO: This plugin has been updated, migrate https://github.com/leoluz/nvim-dap-go/tree/main?tab=readme-ov-file#vscode-launch-config
 			-- NOTE: this requires strict json and cannot have trailing commas or comments
 			local debug_with_launch = function()
 				if vim.fn.filereadable(".vscode/launch.json") then
@@ -61,10 +64,6 @@ return {
 					require("dap.ext.vscode").load_launchjs()
 				end
 				require("dap").continue()
-			end
-
-			local uitoggle = function()
-				require("dapui").toggle({})
 			end
 
 			-- execution commands
@@ -83,7 +82,7 @@ return {
 			end
 
 			-- runtime commands
-			vim.keymap.set("n", "<leader>du", uitoggle, { desc = " ui toggle" })
+			vim.keymap.set("n", "<leader>du", ":DapViewToggle<CR>", { desc = "ui toggle" })
 			vim.keymap.set("n", "<Leader>db", ":DapToggleBreakpoint<CR>")
 			vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 			vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
