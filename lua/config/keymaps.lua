@@ -82,3 +82,7 @@ Nmap("[<Space>", "O<Esc>")
 
 -- Lazy plugins that need keymaps
 Nmap("<leader>b", ":DBUIToggle<CR>", "Data[B]ase")
+
+Nmap("<leader>pC", "<cmd>CodeCompanion<CR>", "[C]ode [C]ompanion")
+Nmap("<leader>pa", "<cmd>CodeCompanionActions<CR>", "[A]ctions")
+Nmap("<leader>pc", "<cmd>CodeCompanionChat Toggle<CR>", "Chat")

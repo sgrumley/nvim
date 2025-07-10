@@ -26,6 +26,9 @@ return {
 				use_nvim_cmp_as_default = true,
 			},
 			sources = {
+				per_filetype = {
+					codecompanion = { "codecompanion" },
+				},
 				default = { "lsp", "path", "buffer", "lazydev", "snippets" },
 				providers = {
 					lsp = { fallbacks = { "lazydev" } },

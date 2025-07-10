@@ -1,7 +1,9 @@
 Base editor complete. Follow up by writing more code myself
 -> start optimizing lazy starts where possible
 -> lang files should be a module with a plugins var and setup vars
--> setup: testing, debugging and database tooling
 -> is blink theme working?
 
--> search with n is only going in reverse
+Upcoming plugins to test:
+- octo for github -> use `use_local_fs` = true
+- oil-git as replacement: https://github.com/benomahony/oil-git.nvim
+- https://github.com/aaronik/treewalker.nvim

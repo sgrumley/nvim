@@ -65,7 +65,13 @@ function M.run_go_table_test()
 		mode = "test",
 		program = dir_path,
 		args = { "-test.run", "^" .. full_test_name .. "$" },
+		-- outputMode is what allows REPL to show the logs
+		outputMode = "remote",
 	}
+
+	-- verbose mode adds extra text e.g. test meta
+	local extra_args = { "-test.v" }
+	table.move(extra_args, 1, #extra_args, #config.args + 1, config.args)
 
 	dap.run(config)
 end
