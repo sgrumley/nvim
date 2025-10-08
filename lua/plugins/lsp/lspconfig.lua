@@ -1,6 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		event = "BufReadPre",
 		dependencies = {
 			{ "saghen/blink.cmp" },
 			{ "williamboman/mason.nvim", config = true },
@@ -34,7 +35,6 @@ return {
 				marksman = {},
 				zls = {}, -- consider https://github.com/NTBBloodbath/zig-tools.nvim
 				ols = {},
-				-- buf_language_server = {}, // TODO:
 				buf = {},
 				sqlls = {},
 				-- prettier = {},

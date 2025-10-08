@@ -3,6 +3,7 @@ local debug_utils = require("pkg.debug_utils")
 return {
 	{
 		"mfussenegger/nvim-dap",
+		lazy = true,
 		dependencies = {
 			{
 				"igorlfs/nvim-dap-view",
@@ -13,7 +14,7 @@ return {
 			{
 				"jay-babu/mason-nvim-dap.nvim",
 				dependencies = "mason.nvim",
-				cmd = { "DapInstall", "DapUninstall" },
+				cmd = { "DapViewOpen", "DapViewToggle" },
 				opts = {
 					automatic_installation = true,
 					handlers = {},

@@ -2,6 +2,7 @@ Base editor complete. Follow up by writing more code myself
 -> start optimizing lazy starts where possible
 -> lang files should be a module with a plugins var and setup vars
 -> is blink theme working?
+-> rethink markdown setup and load on lsp attach
 
 Upcoming plugins to test:
 - octo for github -> use `use_local_fs` = true

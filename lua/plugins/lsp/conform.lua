@@ -35,6 +35,7 @@ return {
 			notify_on_error = true,
 			formatters_by_ft = {
 				go = { "gofumpt", "goimports-reviser" }, -- golines
+				rust = { "rustfmt" },
 				templ = { "templ" },
 				sql = { "sql_formatter" }, -- sql_formatter seems to be the one used in vscode
 				javascript = { "prettier" },

@@ -48,6 +48,15 @@ return {
 		event = "VeryLazy",
 		opts = {},
 		config = function()
+			-- nvim-notify setup for bottom left corner
+			require("notify").setup({
+				-- Set the position to bottom left
+				top_down = false, -- ensures newer notifications are at the bottom
+				render = "default",
+				stages = "fade",
+			})
+			vim.notify = require("notify")
+
 			require("noice").setup({
 				lsp = {
 					signature = {

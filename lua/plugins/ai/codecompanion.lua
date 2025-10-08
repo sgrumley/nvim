@@ -5,6 +5,7 @@
 return {
 	{
 		"olimorris/codecompanion.nvim",
+		event = "BufReadPre",
 		opts = {},
 		dependencies = {
 			"github/copilot.vim",
